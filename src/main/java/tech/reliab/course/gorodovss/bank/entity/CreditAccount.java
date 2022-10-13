@@ -1,70 +1,47 @@
 package tech.reliab.course.gorodovss.bank.entity;
 
-import tech.reliab.course.gorodovss.bank.service.CreditAccountService;
+import java.util.Date;
 
-/** Содержит информацию о кредитном аккаунте и выводит:
- * id
- * владельца (ФИО)
- * название банка
- * дату начала кредита
- * дату окончания кредита
- * продолжительность кредита
- * размер кредита
- * ежемесячный платеж
- * процентную ставку
- * сотрудника, выдавшего карту (ФИО)
- * платежный аккаунт (id)
- * **/
-public class CreditAccount  implements CreditAccountService {
+
+public class CreditAccount {
     int id;
-    User user;
-    Bank bank;
-    Date creditStart;
-    Date creditFinish;
-    int creditLength;
-    int creditSize;
-    int monthlyPayment;
+    Date start;
+    Date finish;
+    int length;
+    double size;
+    double monthlyPayment;
     Employee emp;
     PaymentAccount paymentAcc;
-    /** Конструкторы **/
-    public CreditAccount(int id, User user, Bank bank, Date creditStart, Date creditFinish, int creditSize, Employee emp, PaymentAccount paymentAcc){
-        setId(id);
-        setUser(user);
-        setBank(bank);
-        setCreditStart(creditStart);
-        setCreditFinish(creditFinish);
-        setCreditLength();
-        setCreditSize(creditSize);
-        setMonthlyPayment();
-        setEmp(emp);
-        setPaymentAcc(paymentAcc);
+    public CreditAccount(int id, Date start, Date finish, int size, Employee emp, PaymentAccount paymentAcc){
+        this.id = id;
+        this.start = start;
+        this.finish = finish;
+        this.size = size;
+        this.length = (this.finish.getYear()- this.start.getYear()) * 12 + this.finish.getMonth() - this.start.getMonth();
+        if (this.finish.getDay() > this.start.getDay())
+            this.length++;
+        this.monthlyPayment = size/(length*1.0);
+        this.emp = emp;
+        this.paymentAcc = paymentAcc;
+        this.paymentAcc.user.setCreditAcc(this);
     }
-    /** Сеттеры **/
     public void setId(int id){
         this.id = id;
     }
-    public void setUser(User user){
-        this.user = user;
+    public void setStart(Date start){
+        this.start = start;
     }
-    public void setBank(Bank bank){
-        this.bank = bank;
+    public void setFinish(Date finish){
+        this.finish = finish;
     }
-    public void setCreditStart(Date creditStart){
-        this.creditStart = creditStart;
+    public void setLength(int length){
+        this.length = length;
     }
-    public void setCreditFinish(Date creditFinish){
-        this.creditFinish = creditFinish;
+    public void setSize(int size){
+        this.size = size;
     }
-    public void setCreditLength(){
-        this.creditLength = (this.creditFinish.year - this.creditStart.year) * 12 + this.creditFinish.month - this.creditStart.month;
-        if (this.creditFinish.day > this.creditStart.day)
-            this.creditLength++;
-    }
-    public void setCreditSize(int creditSize){
-        this.creditSize = creditSize;
-    }
-    public void setMonthlyPayment(){
-        this.monthlyPayment = creditSize/creditLength;
+    public void setMonthlyPayment(int monthlyPayment){
+        this.monthlyPayment = monthlyPayment;
     }
     public void setEmp(Employee emp){
         this.emp = emp;
@@ -72,58 +49,28 @@ public class CreditAccount  implements CreditAccountService {
     public void setPaymentAcc(PaymentAccount paymentAcc){
         this.paymentAcc = paymentAcc;
     }
-    /** Геттеры **/
     public int getId(){
         return this.id;
     }
-    public User getUser(){
-        return this.user;
+    public Date getStart(){
+        return this.start;
     }
-    public String getBankName(){
-        return this.bank.getName();
+    public Date getFinish(){
+        return this.finish;
     }
-    public Date getCreditStart(){
-        return this.creditStart;
+    public int getLength(){
+        return this.length;
     }
-    public Date getCreditFinish(){
-        return this.creditFinish;
+    public double getSize(){
+        return this.size;
     }
-    public int getCreditLength(){
-        return this.creditLength;
-    }
-    public int getCreditSize(){
-        return this.creditSize;
-    }
-    public int getMonthlyPayment(){
+    public double getMonthlyPayment(){
         return this.monthlyPayment;
-    }
-    public float getInterestRating(){
-        return this.bank.getIRate();
     }
     public Employee getEmp(){
         return this.emp;
     }
     public PaymentAccount getPaymentAcc(){
         return this.paymentAcc;
-    }
-    /** Вывод основных данных об объекте класса в консоль **/
-    @Override
-    public void display(){
-        System.out.print("\n ***Кредитный аккаунт*** \n");
-        System.out.printf("id: %d \n", getId());
-        System.out.print("user name: ");
-        getUser().fullName();
-        System.out.printf("bank name: %s \n", getBankName());
-        System.out.print("credit start date: ");
-        getCreditStart().fullDate();
-        System.out.print("credit finish date: ");
-        getCreditFinish().fullDate();
-        System.out.printf("credit length: %d \n", getCreditLength());
-        System.out.printf("credit size: %d \n", getCreditSize());
-        System.out.printf("monthly payment: %d \n", getMonthlyPayment());
-        System.out.printf("interest rating: %f \n", getInterestRating());
-        System.out.print("employee: ");
-        getEmp().fullName();
-        System.out.printf("payment account: %d \n", getPaymentAcc().getId());
     }
 }

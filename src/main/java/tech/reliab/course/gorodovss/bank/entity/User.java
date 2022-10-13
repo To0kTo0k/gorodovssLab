@@ -1,39 +1,24 @@
 package tech.reliab.course.gorodovss.bank.entity;
 
-import tech.reliab.course.gorodovss.bank.service.UserService;
+import tech.reliab.course.gorodovss.bank.utils.FullName;
 
-/** Содержит информацию о клиенте банка и выводит:
- * id
- * имя (ФИО)
- * дату рождения
- * место работы
- * название банка
- * кредитный рейтинг
- * кредитный аккаунт (id)
- * платежный аккаунт (id)
- * зарплату
- * **/
-public class User extends Person implements UserService {
+public class User extends FullName {
     int id;
     String workplace;
-    int usSal;
     CreditAccount creditAcc;
     PaymentAccount paymentAcc;
-    int creditRate;
+    double creditRate;
+    double salary;
     Bank bank;
-
-    /** Конструкторы **/
     {
-        usSal = (int) (Math.random() * 10000);
-        creditRate = ((usSal / 1000) + 1) * 100;
+        salary = (int) (Math.random() * 10000);
+        creditRate = ((salary / 1000.0) + 1) * 100.0;
     }
-    public User(String firstName, String secondName, String surname, int day, int month, int year, int id, String workplace, Bank bank){
-        super(firstName, secondName, surname, day, month, year);
-        setId(id);
-        setWorkplace(workplace);
-        setBank(bank);
+    public User(String firstName, String secondName, String surname, int id, String workplace){
+        super(firstName, secondName, surname);
+        this.id = id;
+        this.workplace = workplace;
     }
-    /** Сеттеры **/
     public void setId(int id){
         this.id = id;
     }
@@ -46,25 +31,20 @@ public class User extends Person implements UserService {
     public void setPaymentAcc(PaymentAccount paymentAcc){
         this.paymentAcc = paymentAcc;
     }
-    public void setCreditRate(int creditRate){
+    public void setCreditRate(double creditRate){
         this.creditRate = creditRate;
+    }
+    public void setSalary(double salary){
+        this.salary = salary;
     }
     public void setBank(Bank bank){
         this.bank = bank;
-        this.bank.counterClientNum();
     }
-    /** Геттеры **/
     public int getId(){
         return this.id;
     }
     public String getWorkplace(){
         return this.workplace;
-    }
-    public String getBankName(){
-        return this.bank.getName();
-    }
-    public int getCreditRate(){
-        return this.creditRate;
     }
     public CreditAccount getCreditAcc(){
         return this.creditAcc;
@@ -72,23 +52,13 @@ public class User extends Person implements UserService {
     public PaymentAccount getPaymentAcc(){
         return this.paymentAcc;
     }
-    public int getUsSal(){
-        return this.usSal;
+    public double getCreditRate(){
+        return this.creditRate;
     }
-    /** Вывод основных данных об объекте класса в консоль **/
-    @Override
-    public void display(){
-        System.out.print("\n ***Пользователь*** \n");
-        System.out.printf("id: %d \n", getId());
-        System.out.print("user name: ");
-        this.fullName();
-        System.out.print("birthday: ");
-        this.fullDate();
-        System.out.printf("workplace: %s \n", getWorkplace());
-        System.out.printf("bank name: %s \n", getBankName());
-        System.out.printf("credit rating: %d \n", getCreditRate());
-        System.out.printf("credit account id: %d \n", getCreditAcc().getId());
-        System.out.printf("payment account id: %d \n", getPaymentAcc().getId());
-        System.out.printf("user salary: %d \n", getUsSal());
+    public double getSalary(){
+        return this.salary;
+    }
+    public Bank getBank(){
+        return this.bank;
     }
 }

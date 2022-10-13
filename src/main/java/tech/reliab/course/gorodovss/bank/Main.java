@@ -1,36 +1,51 @@
 package tech.reliab.course.gorodovss.bank;
 
 import tech.reliab.course.gorodovss.bank.entity.*;
+import tech.reliab.course.gorodovss.bank.service.impl.*;
+import java.sql.Date;
 
 public class Main {
     public static void main(String[] args){
-        /** Создание банка **/
-        Bank bank1 = new Bank(1, "Сбербанк");
-        /** Создание офиса **/
-        BankOffice office1 = new BankOffice(1, "Штаб", "Белгород, Гражданский проспект, 1", true, true,  3, true, true, true, bank1, bank1.getCashNum()/2);
-        /** Создание сотрудника **/
-        Employee emp1 = new Employee("Иван", "Иванович", "Иванов", 3, 3, 2000, 1, "Менеджер", true, office1, true, 25000);
-        /** Создание банкомата **/
-        BankAtm atm1 = new BankAtm(1, "Первый", office1, 1, "Вход", emp1, true, true, 5000);
-        /** Создание клиента **/
-        User user1 = new User("Петр", "Петрович", "Петров", 1, 1,2000,1,"Пятёрочка", bank1);
-        /** Создание платежного аккаунта **/
-        PaymentAccount card1 = new PaymentAccount(1, user1, bank1);
-        /** Создание кредитного аккаунта **/
-        Date start = new Date(1,1,2022);
-        Date finish = new Date(3,3,2025);
-        CreditAccount card2 = new CreditAccount(1, user1, bank1, start, finish, 10000, emp1, card1);
-        /** Присвоение пользователю банковских аккаунтов **/
-        user1.setPaymentAcc(card1);
-        user1.setCreditAcc(card2);
+        //bank
+        Bank bank = new Bank(1, "Банк");
+        BankServiceImpl bankService = new BankServiceImpl();
 
-        /** Вывод банка, офиса, сотрудника, банковского автомата, пользователя, платежного аккаунта, кредитного аккаунта **/
-        bank1.display();
-        office1.display();
-        emp1.display();
-        atm1.display();
-        user1.display();
-        card1.display();
-        card2.display();
+        //bank office
+        BankOffice office = new BankOffice(1, "Офис", "Адрес", true, true, true, true, bank, 15000);
+        BankOfficeServiceImpl officeService = new BankOfficeServiceImpl();
+        bankService.officeNumInc(bank);
+
+        //user
+        User user = new User("Иван", "Иванович", "Иванов", 1, "Работа");
+        UserServiceImpl userService = new UserServiceImpl();
+        bankService.clientNumInc(bank);
+
+        //payment acc
+        PaymentAccount pAcc = new PaymentAccount(1, user, bank);
+        PaymentAccountServiceImpl paymentAccountService = new PaymentAccountServiceImpl();
+
+        //employee
+        Employee employee = new Employee("Петр", "Петрович", "Петров", 1, "Должность", true, office, true, 5000);
+        EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
+        employeeService.empNumInc(employee);
+
+        //atm
+        BankAtm atm = new BankAtm(1, "Банкомат", office, 1, "Расположение", employee, true, true, 1000);
+        AtmServiceImpl atmService = new AtmServiceImpl();
+        atmService.atmNumInc(atm);
+
+        //credit acc
+        //year counting start from 1900
+        //month is from 0 to 11
+        CreditAccount cAcc = new CreditAccount(2, new Date(122, 8, 11), new Date(122, 11, 11), 2000, employee, pAcc);
+        CreditAccountServiceImpl creditAccountService = new CreditAccountServiceImpl();
+
+        System.out.println(bankService.toString(bank));
+        System.out.println(officeService.toString(office));
+        System.out.println(employeeService.toString(employee));
+        System.out.println(atmService.toString(atm));
+        System.out.println(userService.toString(user));
+        System.out.println(paymentAccountService.toString(pAcc));
+        System.out.println(creditAccountService.toString(cAcc));
     }
 }
