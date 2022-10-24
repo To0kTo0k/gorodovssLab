@@ -5,72 +5,58 @@ import tech.reliab.course.gorodovss.bank.entity.Bank;
 
 public class BankServiceImpl implements BankService {
     @Override
-    public String toString(Bank bank) {
-        return "Банк{" +
-                "id=" + bank.getId() +
-                ", название='" + bank.getName() + '\'' +
-                ", количество офисов=" + bank.getOfficeNum() +
-                ", количество банкоматов=" + bank.getAtmNum() +
-                ", количество сотрудников=" + bank.getEmpNum() +
-                ", количество клиентов=" + bank.getClientNum() +
-                ", банковский рейтинг=" + bank.getBRate() +
-                ", количество денег в банке=" + bank.getCashNum() +
-                ", процентная ставка=" + bank.getIRate() +
-                '}';
+    public void addOffice(Bank bank) {
+        bank.setOfficeCount(bank.getOfficeCount() + 1);
     }
     @Override
-    public void officeNumInc(Bank bank) {
-        bank.setOfficeNum(bank.getOfficeNum() + 1);
-    }
-    @Override
-    public Boolean officeNumDec(Bank bank) {
-        if (bank.getOfficeNum() == 0)
+    public Boolean subOffice(Bank bank) {
+        if (bank.getOfficeCount() == 0)
             return Boolean.FALSE;
-        bank.setOfficeNum(bank.getOfficeNum() - 1);
+        bank.setOfficeCount(bank.getOfficeCount() - 1);
         return Boolean.TRUE;
     }
     @Override
-    public void atmNumInc(Bank bank) {
-        bank.setAtmNum(bank.getAtmNum() + 1);
+    public void addAtm(Bank bank) {
+        bank.setAtmCount(bank.getAtmCount() + 1);
     }
     @Override
-    public Boolean atmNumDec(Bank bank) {
-        if (bank.getAtmNum() == 0)
+    public Boolean subAtm(Bank bank) {
+        if (bank.getAtmCount() == 0)
             return Boolean.FALSE;
-        bank.setAtmNum(bank.getAtmNum() - 1);
+        bank.setAtmCount(bank.getAtmCount() - 1);
         return Boolean.TRUE;
     }
     @Override
-    public void empNumInc(Bank bank) {
-        bank.setEmpNum(bank.getEmpNum() + 1);
+    public void addEmployee(Bank bank) {
+        bank.setEmployeeCount(bank.getEmployeeCount() + 1);
     }
     @Override
-    public Boolean empNumDec(Bank bank) {
-        if ( bank.getEmpNum() == 0)
+    public Boolean subEmployee(Bank bank) {
+        if ( bank.getEmployeeCount() == 0)
             return Boolean.FALSE;
-        bank.setEmpNum(bank.getEmpNum() - 1);
+        bank.setEmployeeCount(bank.getEmployeeCount() - 1);
         return Boolean.TRUE;
     }
     @Override
-    public void clientNumInc(Bank bank) {
-        bank.setClientNum(bank.getClientNum() + 1);
+    public void addClient(Bank bank) {
+        bank.setClientCount(bank.getClientCount() + 1);
     }
     @Override
-    public Boolean clientNumDec(Bank bank) {
-        if (bank.getClientNum() == 0)
+    public Boolean subClient(Bank bank) {
+        if (bank.getClientCount() == 0)
             return Boolean.FALSE;
-        bank.setClientNum(bank.getClientNum() - 1);
+        bank.setClientCount(bank.getClientCount() - 1);
         return Boolean.TRUE;
     }
     @Override
     public void addMoney(Bank bank, int money) {
-        bank.setCashNum(bank.getCashNum() + money);
+        bank.setMoney(bank.getMoney() + money);
     }
     @Override
     public Boolean subMoney(Bank bank, int money) {
-        if (bank.getCashNum() < money)
+        if (bank.getMoney() < money)
             return Boolean.FALSE;
-        bank.setCashNum(bank.getCashNum() - money);
+        bank.setMoney(bank.getMoney() - money);
         return Boolean.TRUE;
     }
     @Override

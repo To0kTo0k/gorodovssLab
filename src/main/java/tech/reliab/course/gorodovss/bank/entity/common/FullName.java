@@ -1,4 +1,4 @@
-package tech.reliab.course.gorodovss.bank.utils;
+package tech.reliab.course.gorodovss.bank.entity.common;
 
 public class FullName {
     private String firstName;

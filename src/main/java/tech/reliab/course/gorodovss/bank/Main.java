@@ -3,6 +3,7 @@ package tech.reliab.course.gorodovss.bank;
 import tech.reliab.course.gorodovss.bank.entity.*;
 import tech.reliab.course.gorodovss.bank.service.impl.*;
 import java.sql.Date;
+import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args){
@@ -12,40 +13,34 @@ public class Main {
 
         //bank office
         BankOffice office = new BankOffice(1, "Офис", "Адрес", true, true, true, true, bank, 15000);
-        BankOfficeServiceImpl officeService = new BankOfficeServiceImpl();
-        bankService.officeNumInc(bank);
+        bankService.addOffice(bank);
 
         //user
         User user = new User("Иван", "Иванович", "Иванов", 1, "Работа");
-        UserServiceImpl userService = new UserServiceImpl();
-        bankService.clientNumInc(bank);
+        bankService.addClient(bank);
 
         //payment acc
         PaymentAccount pAcc = new PaymentAccount(1, user, bank);
-        PaymentAccountServiceImpl paymentAccountService = new PaymentAccountServiceImpl();
 
         //employee
         Employee employee = new Employee("Петр", "Петрович", "Петров", 1, "Должность", true, office, true, 5000);
         EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
-        employeeService.empNumInc(employee);
+        employeeService.addEmployee(employee);
 
         //atm
         BankAtm atm = new BankAtm(1, "Банкомат", office, 1, "Расположение", employee, true, true, 1000);
         AtmServiceImpl atmService = new AtmServiceImpl();
-        atmService.atmNumInc(atm);
+        atmService.addAtm(atm);
 
         //credit acc
-        //year counting start from 1900
-        //month is from 0 to 11
-        CreditAccount cAcc = new CreditAccount(2, new Date(122, 8, 11), new Date(122, 11, 11), 2000, employee, pAcc);
-        CreditAccountServiceImpl creditAccountService = new CreditAccountServiceImpl();
+        CreditAccount cAcc = new CreditAccount(2, LocalDate.of(2022, 9, 11), LocalDate.of(2022,11,11), 2000, employee, pAcc);
 
-        System.out.println(bankService.toString(bank));
-        System.out.println(officeService.toString(office));
-        System.out.println(employeeService.toString(employee));
-        System.out.println(atmService.toString(atm));
-        System.out.println(userService.toString(user));
-        System.out.println(paymentAccountService.toString(pAcc));
-        System.out.println(creditAccountService.toString(cAcc));
+        System.out.println(bank);
+        System.out.println(office);
+        System.out.println(employee);
+        System.out.println(atm);
+        System.out.println(user);
+        System.out.println(pAcc);
+        System.out.println(cAcc);
     }
 }

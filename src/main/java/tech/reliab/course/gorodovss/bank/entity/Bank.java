@@ -3,21 +3,19 @@ package tech.reliab.course.gorodovss.bank.entity;
 public class Bank {
     private int id;
     private String name;
-    private int officeNum = 0;
-    private int atmNum = 0;
-    private int empNum = 0;
-    private int clientNum = 0;
-    private byte bRate;
-    private double cashNum;
-    private float iRate;
-    {
-        this.bRate = (byte) (Math.random() * 100);
-        this.cashNum = (int) (Math.random() * 1000000);
-        this.iRate = 20 - (float) (bRate * 0.2);
-    }
+    private int officeCount = 0;
+    private int atmCount = 0;
+    private int employeeCount = 0;
+    private int clientCount = 0;
+    private byte bankRating;
+    private double money;
+    private float interestRating;   //процентная ставка
     public Bank(int id, String name){
         this.id = id;
         this.name = name;
+        this.bankRating = (byte) (Math.random() * 100);
+        this.money = (int) (Math.random() * 1000000);
+        this.interestRating = 20 - (float) (bankRating * 0.2);
     }
     public void setId(int id){
         this.id = id;
@@ -25,26 +23,26 @@ public class Bank {
     public void setName(String Name){
         this.name = name;
     }
-    public void setOfficeNum(int officeNum){
-        this.officeNum = officeNum;
+    public void setOfficeCount(int officeCount){
+        this.officeCount = officeCount;
     }
-    public void setAtmNum(int atmNum){
-        this.atmNum = atmNum;
+    public void setAtmCount(int atmCount){
+        this.atmCount = atmCount;
     }
-    public void setEmpNum(int empNum){
-        this.empNum = empNum;
+    public void setEmployeeCount(int employeeCount){
+        this.employeeCount = employeeCount;
     }
-    public void setClientNum(int clientNum){
-        this.clientNum = clientNum;
+    public void setClientCount(int clientCount){
+        this.clientCount = clientCount;
     }
-    public void setBRate(byte bRate){
-        this.bRate = bRate;
+    public void setBankRating(byte bRate){
+        this.bankRating = bRate;
     }
-    public void setIRate(float iRate){
-        this.iRate = iRate;
+    public void setInterestRating(float iRate){
+        this.interestRating = iRate;
     }
-    public void setCashNum(double cashNum){
-        this.cashNum = cashNum;
+    public void setMoney(double money){
+        this.money = money;
     }
     public int getId(){
         return this.id;
@@ -52,26 +50,39 @@ public class Bank {
     public String getName(){
         return this.name;
     }
-    public int getOfficeNum(){
-        return this.officeNum;
+    public int getOfficeCount(){
+        return this.officeCount;
     }
-    public int getAtmNum(){
-        return this.atmNum;
+    public int getAtmCount(){
+        return this.atmCount;
     }
-    public int getEmpNum(){
-        return this.empNum;
+    public int getEmployeeCount(){
+        return this.employeeCount;
     }
-    public int getClientNum(){
-        return this.clientNum;
+    public int getClientCount(){
+        return this.clientCount;
     }
-    public byte getBRate(){
-        return this.bRate;
+    public byte getBankRating(){
+        return this.bankRating;
     }
-    public double getCashNum(){
-        return this.cashNum;
+    public double getMoney(){
+        return this.money;
     }
-    public float getIRate(){
-        return this.iRate;
+    public float getInterestRating(){
+        return this.interestRating;
     }
-
+    @Override
+    public String toString() {
+        return "Банк{" +
+                "id=" + this.id +
+                ", название='" + this.name + '\'' +
+                ", количество офисов=" + this.officeCount +
+                ", количество банкоматов=" + this.atmCount +
+                ", количество сотрудников=" + this.employeeCount +
+                ", количество клиентов=" + this.clientCount +
+                ", банковский рейтинг=" + this.bankRating +
+                ", количество денег в банке=" + this.money +
+                ", процентная ставка=" + this.interestRating +
+                '}';
+    }
 }
