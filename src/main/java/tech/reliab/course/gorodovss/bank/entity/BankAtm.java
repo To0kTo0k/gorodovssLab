@@ -77,23 +77,23 @@ public class BankAtm {
     }
     @Override
     public String toString() {
-        String str = "Банкомат{" +
-                "id=" + this.id +
-                ", название='" + this.name + '\'' +
-                ", адрес офиса='" + this.office.getAddress() + '\'';
+        String str = "Банкомат{" + '\n' +
+                '\t' + "id=" + this.id + ',' + '\n' +
+                '\t' + "название='" + this.name + '\'' + ',' + '\n' +
+                '\t' + "адрес офиса='" + this.office.getAddress() + '\'' + ',' + '\n';
         switch(this.isWork) {
-            case 0-> str += ", банкомат работает";
-            case 1-> str += ", банкомат не работает";
-            case 2-> str += ", нет денег";
+            case 0-> str += '\t' + "банкомат работает" + ',' + '\n';
+            case 1-> str += '\t' + "банкомат не работает" + ',' + '\n';
+            case 2-> str += '\t' + "нет денег" + ',' + '\n';
         }
-        str += ", название банка='" + this.office.getBank().getName() + '\'' +
-                ", расположение='" + this.position + '\'' +
-                ", обслуживающий сотрудник='" + this.serviceEmployee.getFullName() + '\'';
-        str += (this.isMoneyGet) ? ", работает на выдачу денег" : ", не работает на выдачу денег";
-        str += (this.isMoneyPut) ? ", работает на прием денег" : ", не работает на прием денег";
-        str += ", количество денег в банке=" + this.office.getBank().getMoney() +
-                ", стоимость сервисного обслуживания=" + this.serviceCost +
-                '}';
+        str += '\t' + "название банка='" + this.office.getBank().getName() + '\'' + ',' + '\n' +
+                '\t' + "расположение='" + this.position + '\'' + ',' + '\n' +
+                '\t' + "обслуживающий сотрудник='" + this.serviceEmployee.getFullName() + '\'' + ',' + '\n';
+        str += (this.isMoneyGet) ? '\t' + "работает на выдачу денег" + ',' + '\n' : '\t' + "не работает на выдачу денег" + ',' + '\n';
+        str += (this.isMoneyPut) ? '\t' + "работает на прием денег" + ',' + '\n' : '\t' + "не работает на прием денег" + ',' + '\n';
+        str += '\t' + "количество денег в банке=" + this.office.getBank().getMoney() + ',' + '\n' +
+                '\t' + "стоимость сервисного обслуживания=" + this.serviceCost + ',' + '\n' +
+                '}' + '\n';
         return str;
     }
 }

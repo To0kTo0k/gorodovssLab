@@ -1,10 +1,10 @@
 package tech.reliab.course.gorodovss.bank.entity.common;
 
-public class FullName {
+public abstract class Person {
     private String firstName;
     private String secondName;
     private String surname;
-    public FullName(String firstName, String secondName, String surname) {
+    public Person(String firstName, String secondName, String surname) {
         this.firstName = firstName;
         this.secondName = secondName;
         this.surname = surname;

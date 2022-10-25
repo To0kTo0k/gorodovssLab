@@ -73,16 +73,16 @@ public class Bank {
     }
     @Override
     public String toString() {
-        return "Банк{" +
-                "id=" + this.id +
-                ", название='" + this.name + '\'' +
-                ", количество офисов=" + this.officeCount +
-                ", количество банкоматов=" + this.atmCount +
-                ", количество сотрудников=" + this.employeeCount +
-                ", количество клиентов=" + this.clientCount +
-                ", банковский рейтинг=" + this.bankRating +
-                ", количество денег в банке=" + this.money +
-                ", процентная ставка=" + this.interestRating +
-                '}';
+        return "Банк{" + '\n' +
+                '\t' + "id=" + this.id + ',' + '\n' +
+                '\t' + "название='" + this.name + '\'' + ',' + '\n' +
+                '\t' + "количество офисов=" + this.officeCount + ',' + '\n' +
+                '\t' + "количество банкоматов=" + this.atmCount + ',' + '\n' +
+                '\t' + "количество сотрудников=" + this.employeeCount + ',' + '\n' +
+                '\t' + "количество клиентов=" + this.clientCount + ',' + '\n' +
+                '\t' + "банковский рейтинг=" + this.bankRating + ',' + '\n' +
+                '\t' + "количество денег в банке=" + this.money + ',' + '\n' +
+                '\t' + "процентная ставка=" + this.interestRating + ',' + '\n' +
+                '}' + '\n';
     }
 }

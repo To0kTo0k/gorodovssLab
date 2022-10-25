@@ -1,8 +1,8 @@
 package tech.reliab.course.gorodovss.bank.entity;
 
-import tech.reliab.course.gorodovss.bank.entity.common.FullName;
+import tech.reliab.course.gorodovss.bank.entity.common.Person;
 
-public class Employee extends FullName {
+public class Employee extends Person {
     int id;
     String position;
     boolean workMode;
@@ -56,16 +56,16 @@ public class Employee extends FullName {
     }
     @Override
     public String toString() {
-        String str = "Работник{" +
-                "id=" + this.id +
-                ", имя='" + this.getFullName() + '\'' +
-                ", должность='" + this.position + '\'' +
-                ", название банка='" + this.office.getBank().getName() + '\'';
-        str += (this.workMode) ? ", очный режим работы" : ", удаленный режим работы";
-        str += ", название офиса='" + this.office.getName() + '\'';
-        str += (this.isCredit) ? ", работает с выдачей кредитов" : ", не работает с выдачей кредитов";
-        str += ", зарплата=" + this.salary +
-                '}';
+        String str = "Работник{" + '\n' +
+                '\t' + "id=" + this.id + ',' + '\n' +
+                '\t' + "имя='" + super.getFullName() + '\'' + ',' + '\n' +
+                '\t' + "должность='" + this.position + '\'' + ',' + '\n' +
+                '\t' + "название банка='" + this.office.getBank().getName() + '\'' + ',' + '\n';
+        str += (this.workMode) ? '\t' + "очный режим работы" + ',' + '\n' : '\t' + "удаленный режим работы" + ',' + '\n';
+        str += '\t' + "название офиса='" + this.office.getName() + '\'' + ',' + '\n';
+        str += (this.isCredit) ? '\t' + "работает с выдачей кредитов" + ',' + '\n' : '\t' + "не работает с выдачей кредитов" + ',' + '\n';
+        str += '\t' + "зарплата=" + this.salary + ',' + '\n' +
+                '}' + '\n';
         return str;
     }
 }

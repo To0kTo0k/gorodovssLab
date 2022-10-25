@@ -31,11 +31,11 @@ public class PaymentAccount {
     }
     @Override
     public String toString() {
-        return "Платежный аккаунт{" +
-                "id=" + this.id +
-                ", имя владельца='" + this.user.getFullName() + '\'' +
-                ", название банка='" + this.user.getBank().getName() + '\'' +
-                ", количество денег=" + this.money +
-                '}';
+        return "Платежный аккаунт{" + '\n' +
+                '\t' + "id=" + this.id + ',' + '\n' +
+                '\t' + "имя владельца='" + this.user.getFullName() + '\'' + ',' + '\n' +
+                '\t' + "название банка='" + this.user.getBank().getName() + '\'' + ',' + '\n' +
+                '\t' + "количество денег=" + this.money + ',' + '\n' +
+                '}' + '\n';
     }
 }

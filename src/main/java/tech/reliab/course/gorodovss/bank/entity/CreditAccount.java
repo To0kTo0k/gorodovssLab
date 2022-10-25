@@ -75,18 +75,18 @@ public class CreditAccount {
     }
     @Override
     public String toString() {
-        return "Кредитный аккаунт{" +
-                "id=" + this.id +
-                ", имя пользователя='" + this.paymentAccount.getUser().getFullName() + '\'' +
-                ", название банка='" + this.paymentAccount.getUser().getBank().getName() + '\'' +
-                ", дата открытия кредита=" + this.start +
-                ", дата закрытия кредита=" + this.finish +
-                ", продолжительность кредита=" + this.length +
-                ", размер кредита=" + this.size +
-                ", ежемесячный платеж=" + this.monthlyPayment +
-                ", процентная ставка=" + this.paymentAccount.getUser().getBank().getInterestRating() +
-                ", сотрудник выдавший кредит='" + this.employee.getFullName() + '\'' +
-                ", платежный аккаунт(id)=" + this.paymentAccount.getId() +
-                '}';
+        return "Кредитный аккаунт{" + '\n' +
+                '\t' + "id=" + this.id + ',' + '\n' +
+                '\t' + "имя пользователя='" + this.paymentAccount.getUser().getFullName() + '\'' + ',' + '\n' +
+                '\t' + "название банка='" + this.paymentAccount.getUser().getBank().getName() + '\'' + ',' + '\n' +
+                '\t' + "дата открытия кредита=" + this.start + ',' + '\n' +
+                '\t' + "дата закрытия кредита=" + this.finish + ',' + '\n' +
+                '\t' + "продолжительность кредита=" + this.length + ',' + '\n' +
+                '\t' + "размер кредита=" + this.size + ',' + '\n' +
+                '\t' + "ежемесячный платеж=" + this.monthlyPayment + ',' + '\n' +
+                '\t' + "процентная ставка=" + this.paymentAccount.getUser().getBank().getInterestRating() + ',' + '\n' +
+                '\t' + "сотрудник выдавший кредит='" + this.employee.getFullName() + '\'' + ',' + '\n' +
+                '\t' + "платежный аккаунт(id)=" + this.paymentAccount.getId() + ',' + '\n' +
+                '}' + '\n';
     }
 }

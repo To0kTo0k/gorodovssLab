@@ -1,8 +1,8 @@
 package tech.reliab.course.gorodovss.bank.entity;
 
-import tech.reliab.course.gorodovss.bank.entity.common.FullName;
+import tech.reliab.course.gorodovss.bank.entity.common.Person;
 
-public class User extends FullName {
+public class User extends Person {
     int id;
     String workplace;
     CreditAccount creditAccount;
@@ -61,16 +61,16 @@ public class User extends FullName {
     }
     @Override
     public String toString() {
-        String str = "Пользователь{" +
-                "id=" + this.id +
-                ", имя='" + this.getFullName() + '\'' +
-                ", место работы='" + this.workplace + '\'' +
-                ", зарплата='" + this.salary;
-        str += (this.bank == null) ? ", не является клиентом банка" : ", название банка='" + this.bank.getName() + '\'';
-        str += (this.creditAccount == null) ? ", кредитный аккаунт отсутствует" : ", кредитный аккаунт(id)=" + this.creditAccount.getId();
-        str += (this.paymentAccount == null) ? ", платежный аккаунт отсутствует" : ", платежный аккаунт(id)=" + this.paymentAccount.getId();
-        str += ", кредитный рейтинг=" + this.creditRating +
-                '}';
+        String str = "Пользователь{" + '\n' +
+                '\t' + "id=" + this.id + ',' + '\n' +
+                '\t' + "имя='" + super.getFullName() + '\'' + ',' + '\n' +
+                '\t' + "место работы='" + this.workplace + '\'' + ',' + '\n' +
+                '\t' + "зарплата='" + this.salary + ',' + '\n';
+        str += (this.bank == null) ? '\t' + "не является клиентом банка" + ',' + '\n' : '\t' + "название банка='" + this.bank.getName() + '\'' + ',' + '\n';
+        str += (this.creditAccount == null) ? '\t' + "кредитный аккаунт отсутствует" + ',' + '\n' : '\t' + "кредитный аккаунт(id)=" + this.creditAccount.getId() + ',' + '\n';
+        str += (this.paymentAccount == null) ? '\t' + "платежный аккаунт отсутствует" + ',' + '\n' : '\t' + "платежный аккаунт(id)=" + this.paymentAccount.getId() + ',' + '\n';
+        str += '\t' + "кредитный рейтинг=" + this.creditRating + ',' + '\n' +
+                '}' + '\n';
         return str;
     }
 }
