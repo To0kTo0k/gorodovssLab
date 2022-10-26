@@ -10,55 +10,71 @@ public class User extends Person {
     double creditRating;
     double salary;
     Bank bank;
-    public User(String firstName, String secondName, String surname, int id, String workplace){
+
+    public User(String firstName, String secondName, String surname, int id, String workplace) {
         super(firstName, secondName, surname);
         this.id = id;
         this.workplace = workplace;
         salary = (int) (Math.random() * 10000);
         creditRating = ((salary / 1000.0) + 1) * 100.0;
     }
-    public void setId(int id){
+
+    public void setId(int id) {
         this.id = id;
     }
-    public void setWorkplace(String workplace){
+
+    public void setWorkplace(String workplace) {
         this.workplace = workplace;
     }
-    public void setCreditAccount(CreditAccount creditAccount){
+
+    public void setCreditAccount(CreditAccount creditAccount) {
         this.creditAccount = creditAccount;
     }
-    public void setPaymentAccount(PaymentAccount paymentAccount){
+
+    public void setPaymentAccount(PaymentAccount paymentAccount) {
         this.paymentAccount = paymentAccount;
     }
-    public void setCreditRating(double creditRating){
+
+    public void setCreditRating(double creditRating) {
         this.creditRating = creditRating;
     }
-    public void setSalary(double salary){
+
+    public void setSalary(double salary) {
         this.salary = salary;
     }
-    public void setBank(Bank bank){
+
+    public void setBank(Bank bank) {
         this.bank = bank;
     }
-    public int getId(){
+
+    public int getId() {
         return this.id;
     }
-    public String getWorkplace(){
+
+    public String getWorkplace() {
         return this.workplace;
     }
-    public CreditAccount getCreditAccount(){
+
+    public CreditAccount getCreditAccount() {
         return this.creditAccount;
     }
-    public PaymentAccount getPaymentAccount(){
+
+    public PaymentAccount getPaymentAccount() {
         return this.paymentAccount;
     }
-    public double getCreditRating(){
+
+    public double getCreditRating() {
         return this.creditRating;
     }
-    public double getSalary(){
+
+    public double getSalary() {
         return this.salary;
     }
-    public Bank getBank(){
+
+    public Bank getBank() {
         return this.bank;
     }
+
     @Override
     public String toString() {
         String str = "Пользователь{" + '\n' +

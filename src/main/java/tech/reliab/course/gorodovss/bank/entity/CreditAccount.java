@@ -12,7 +12,8 @@ public class CreditAccount {
     double monthlyPayment;
     Employee employee;
     PaymentAccount paymentAccount;
-    public CreditAccount(int id, LocalDate start, LocalDate finish, int size, Employee employee, PaymentAccount paymentAccount){
+
+    public CreditAccount(int id, LocalDate start, LocalDate finish, int size, Employee employee, PaymentAccount paymentAccount) {
         this.id = id;
         this.start = start;
         this.finish = finish;
@@ -20,59 +21,76 @@ public class CreditAccount {
         this.length = ((this.finish.getYear() - this.start.getYear()) * 12) + (this.finish.getMonthValue() - this.start.getMonthValue());
         if (this.finish.getDayOfMonth() > this.start.getDayOfMonth())
             this.length++;
-        this.monthlyPayment = size/(length*1.0);
+        this.monthlyPayment = size / (length * 1.0);
         this.employee = employee;
         this.paymentAccount = paymentAccount;
         this.paymentAccount.user.setCreditAccount(this);
     }
-    public void setId(int id){
+
+    public void setId(int id) {
         this.id = id;
     }
-    public void setStart(LocalDate start){
+
+    public void setStart(LocalDate start) {
         this.start = start;
     }
-    public void setFinish(LocalDate finish){
+
+    public void setFinish(LocalDate finish) {
         this.finish = finish;
     }
-    public void setLength(int length){
+
+    public void setLength(int length) {
         this.length = length;
     }
-    public void setSize(int size){
+
+    public void setSize(double size) {
         this.size = size;
     }
-    public void setMonthlyPayment(int monthlyPayment){
+
+    public void setMonthlyPayment(double monthlyPayment) {
         this.monthlyPayment = monthlyPayment;
     }
-    public void setEmployee(Employee employee){
+
+    public void setEmployee(Employee employee) {
         this.employee = employee;
     }
-    public void setPaymentAccount(PaymentAccount paymentAccount){
+
+    public void setPaymentAccount(PaymentAccount paymentAccount) {
         this.paymentAccount = paymentAccount;
     }
-    public int getId(){
+
+    public int getId() {
         return this.id;
     }
-    public LocalDate getStart(){
+
+    public LocalDate getStart() {
         return this.start;
     }
-    public LocalDate getFinish(){
+
+    public LocalDate getFinish() {
         return this.finish;
     }
-    public int getLength(){
+
+    public int getLength() {
         return this.length;
     }
-    public double getSize(){
+
+    public double getSize() {
         return this.size;
     }
-    public double getMonthlyPayment(){
+
+    public double getMonthlyPayment() {
         return this.monthlyPayment;
     }
-    public Employee getEmployee(){
+
+    public Employee getEmployee() {
         return this.employee;
     }
-    public PaymentAccount getPaymentAccount(){
+
+    public PaymentAccount getPaymentAccount() {
         return this.paymentAccount;
     }
+
     @Override
     public String toString() {
         return "Кредитный аккаунт{" + '\n' +

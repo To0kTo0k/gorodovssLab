@@ -10,67 +10,87 @@ public class Bank {
     private byte bankRating;
     private double money;
     private float interestRating;   //процентная ставка
-    public Bank(int id, String name){
+
+    public Bank(int id, String name) {
         this.id = id;
         this.name = name;
         this.bankRating = (byte) (Math.random() * 100);
         this.money = (int) (Math.random() * 1000000);
         this.interestRating = 20 - (float) (bankRating * 0.2);
     }
-    public void setId(int id){
+
+    public void setId(int id) {
         this.id = id;
     }
-    public void setName(String Name){
+
+    public void setName(String Name) {
         this.name = name;
     }
-    public void setOfficeCount(int officeCount){
+
+    public void setOfficeCount(int officeCount) {
         this.officeCount = officeCount;
     }
-    public void setAtmCount(int atmCount){
+
+    public void setAtmCount(int atmCount) {
         this.atmCount = atmCount;
     }
-    public void setEmployeeCount(int employeeCount){
+
+    public void setEmployeeCount(int employeeCount) {
         this.employeeCount = employeeCount;
     }
-    public void setClientCount(int clientCount){
+
+    public void setClientCount(int clientCount) {
         this.clientCount = clientCount;
     }
-    public void setBankRating(byte bRate){
+
+    public void setBankRating(byte bRate) {
         this.bankRating = bRate;
     }
-    public void setInterestRating(float iRate){
+
+    public void setInterestRating(float iRate) {
         this.interestRating = iRate;
     }
-    public void setMoney(double money){
+
+    public void setMoney(double money) {
         this.money = money;
     }
-    public int getId(){
+
+    public int getId() {
         return this.id;
     }
-    public String getName(){
+
+    public String getName() {
         return this.name;
     }
-    public int getOfficeCount(){
+
+    public int getOfficeCount() {
         return this.officeCount;
     }
-    public int getAtmCount(){
+
+    public int getAtmCount() {
         return this.atmCount;
     }
-    public int getEmployeeCount(){
+
+    public int getEmployeeCount() {
         return this.employeeCount;
     }
-    public int getClientCount(){
+
+    public int getClientCount() {
         return this.clientCount;
     }
-    public byte getBankRating(){
+
+    public byte getBankRating() {
         return this.bankRating;
     }
-    public double getMoney(){
+
+    public double getMoney() {
         return this.money;
     }
-    public float getInterestRating(){
+
+    public float getInterestRating() {
         return this.interestRating;
     }
+
     @Override
     public String toString() {
         return "Банк{" + '\n' +

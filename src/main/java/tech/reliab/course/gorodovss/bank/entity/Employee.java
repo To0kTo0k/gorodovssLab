@@ -5,55 +5,69 @@ import tech.reliab.course.gorodovss.bank.entity.common.Person;
 public class Employee extends Person {
     int id;
     String position;
-    boolean workMode;
+    boolean workmode;
     BankOffice office;
     boolean isCredit;
     double salary;
-    public Employee(String firstName, String secondName, String surname, int id, String position, boolean workMode, BankOffice office, boolean isCredit, double salary){
+
+    public Employee(String firstName, String secondName, String surname, int id, String position, boolean workmode, BankOffice office, boolean isCredit, double salary) {
         super(firstName, secondName, surname);
         this.id = id;
         this.position = position;
-        this.workMode = workMode;
+        this.workmode = workmode;
         this.office = office;
         this.isCredit = isCredit;
         this.salary = salary;
     }
-    public void setId(int id){
+
+    public void setId(int id) {
         this.id = id;
     }
-    public void setPosition(String position){
+
+    public void setPosition(String position) {
         this.position = position;
     }
-    public void setWorkMode(boolean workMode){
-        this.workMode = workMode;
+
+    public void setWorkmode(boolean workmode) {
+        this.workmode = workmode;
     }
-    public void setOffice(BankOffice office){
+
+    public void setOffice(BankOffice office) {
         this.office = office;
     }
-    public void setIsCredit(boolean isCredit){
+
+    public void setIsCredit(boolean isCredit) {
         this.isCredit = isCredit;
     }
-    public void setSalary(double salary){
+
+    public void setSalary(double salary) {
         this.salary = salary;
     }
-    public int getId(){
+
+    public int getId() {
         return this.id;
     }
-    public String getPosition(){
+
+    public String getPosition() {
         return this.position;
     }
-    public boolean getWorkMode(){
-        return this.workMode;
+
+    public boolean getWorkmode() {
+        return this.workmode;
     }
-    public BankOffice getOffice(){
+
+    public BankOffice getOffice() {
         return this.office;
     }
-    public boolean getIsCredit(){
+
+    public boolean getIsCredit() {
         return this.isCredit;
     }
-    public double getSalary(){
+
+    public double getSalary() {
         return this.salary;
     }
+
     @Override
     public String toString() {
         String str = "Работник{" + '\n' +
@@ -61,7 +75,7 @@ public class Employee extends Person {
                 '\t' + "имя='" + super.getFullName() + '\'' + ',' + '\n' +
                 '\t' + "должность='" + this.position + '\'' + ',' + '\n' +
                 '\t' + "название банка='" + this.office.getBank().getName() + '\'' + ',' + '\n';
-        str += (this.workMode) ? '\t' + "очный режим работы" + ',' + '\n' : '\t' + "удаленный режим работы" + ',' + '\n';
+        str += (this.workmode) ? '\t' + "очный режим работы" + ',' + '\n' : '\t' + "удаленный режим работы" + ',' + '\n';
         str += '\t' + "название офиса='" + this.office.getName() + '\'' + ',' + '\n';
         str += (this.isCredit) ? '\t' + "работает с выдачей кредитов" + ',' + '\n' : '\t' + "не работает с выдачей кредитов" + ',' + '\n';
         str += '\t' + "зарплата=" + this.salary + ',' + '\n' +
