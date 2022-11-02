@@ -30,12 +30,7 @@ public interface EmployeeService {
     public void updateSalary(Employee employee, double salary);
 
     /**
-     * Увеличение счетчика сотрудников банка
-     **/
-    public void addEmployee(Employee employee);
-
-    /**
      * Уменьшение счетчика сотрудников банка
      **/
-    public Boolean subEmployee(Employee employee);
+    //public Boolean subEmployee(Employee employee);
 }

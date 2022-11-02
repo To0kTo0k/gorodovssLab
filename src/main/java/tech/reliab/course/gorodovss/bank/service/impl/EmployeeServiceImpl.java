@@ -44,14 +44,4 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void updateSalary(Employee employee, double salary) {
         employee.setSalary(salary);
     }
-
-    @Override
-    public void addEmployee(Employee employee) {
-        new BankServiceImpl().addEmployee(employee.getOffice().getBank());
-    }
-
-    @Override
-    public Boolean subEmployee(Employee employee) {
-        return new BankServiceImpl().subEmployee(employee.getOffice().getBank());
-    }
 }

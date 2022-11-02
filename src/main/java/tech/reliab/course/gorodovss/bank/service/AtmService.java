@@ -61,17 +61,7 @@ public interface AtmService {
     public void updateOffice(BankAtm atm, BankOffice office);
 
     /**
-     * Увеличение значения счетчика количества банкоматов банка и офиса банка
-     **/
-    public void addAtm(BankAtm atm);
-
-    /**
-     * Уменьшение значения счетчика количества банкоматов банка и офиса банка
-     **/
-    public Boolean subAtm(BankAtm atm);
-
-    /**
      * Удаление объекта класса банкомат
      **/
-    public void delAtm(BankAtm atm);
+    //public void delAtm(BankAtm atm);
 }

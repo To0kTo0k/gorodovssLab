@@ -4,14 +4,14 @@ import java.time.LocalDate;
 
 
 public class CreditAccount {
-    int id;
-    LocalDate start;
-    LocalDate finish;
-    int length;
-    double size;
-    double monthlyPayment;
-    Employee employee;
-    PaymentAccount paymentAccount;
+    private int id;
+    private LocalDate start;
+    private LocalDate finish;
+    private int length;
+    private double size;
+    private double monthlyPayment;
+    private Employee employee;
+    private PaymentAccount paymentAccount;
 
     public CreditAccount(int id, LocalDate start, LocalDate finish, int size, Employee employee, PaymentAccount paymentAccount) {
         this.id = id;
@@ -24,7 +24,7 @@ public class CreditAccount {
         this.monthlyPayment = size / (length * 1.0);
         this.employee = employee;
         this.paymentAccount = paymentAccount;
-        this.paymentAccount.user.setCreditAccount(this);
+        this.paymentAccount.getUser().setCreditAccount(this);
     }
 
     public void setId(int id) {
@@ -93,18 +93,18 @@ public class CreditAccount {
 
     @Override
     public String toString() {
-        return "Кредитный аккаунт{" + '\n' +
-                '\t' + "id=" + this.id + ',' + '\n' +
-                '\t' + "имя пользователя='" + this.paymentAccount.getUser().getFullName() + '\'' + ',' + '\n' +
-                '\t' + "название банка='" + this.paymentAccount.getUser().getBank().getName() + '\'' + ',' + '\n' +
-                '\t' + "дата открытия кредита=" + this.start + ',' + '\n' +
-                '\t' + "дата закрытия кредита=" + this.finish + ',' + '\n' +
-                '\t' + "продолжительность кредита=" + this.length + ',' + '\n' +
-                '\t' + "размер кредита=" + this.size + ',' + '\n' +
-                '\t' + "ежемесячный платеж=" + this.monthlyPayment + ',' + '\n' +
-                '\t' + "процентная ставка=" + this.paymentAccount.getUser().getBank().getInterestRating() + ',' + '\n' +
-                '\t' + "сотрудник выдавший кредит='" + this.employee.getFullName() + '\'' + ',' + '\n' +
-                '\t' + "платежный аккаунт(id)=" + this.paymentAccount.getId() + ',' + '\n' +
-                '}' + '\n';
+        return "\n\tКредитный аккаунт{\n" +
+                "\t\tid=" + this.id + ",\n" +
+                "\t\tимя пользователя='" + this.paymentAccount.getUser().getFullName() + "',\n" +
+                "\t\tназвание банка='" + this.paymentAccount.getBank().getName() + "',\n" +
+                "\t\tдата открытия кредита=" + this.start + ",\n" +
+                "\t\tдата закрытия кредита=" + this.finish + ",\n" +
+                "\t\tпродолжительность кредита=" + this.length + ",\n" +
+                "\t\tразмер кредита=" + this.size + ",\n" +
+                "\t\tежемесячный платеж=" + this.monthlyPayment + ",\n" +
+                "\t\tпроцентная ставка=" + this.paymentAccount.getBank().getInterestRating() + ",\n" +
+                "\t\tсотрудник выдавший кредит='" + this.employee.getFullName() + "',\n" +
+                "\t\tплатежный аккаунт(id)=" + this.paymentAccount.getId() + ",\n" +
+                "\t}\n";
     }
 }

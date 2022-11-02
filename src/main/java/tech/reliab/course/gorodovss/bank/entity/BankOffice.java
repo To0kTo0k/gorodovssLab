@@ -1,5 +1,9 @@
 package tech.reliab.course.gorodovss.bank.entity;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 public class BankOffice {
     private int id;
     private String name;
@@ -13,6 +17,8 @@ public class BankOffice {
     private Bank bank;
     private double rentCost;
 
+    private final Map<Integer, Employee> employeeMap = new HashMap<>();
+
     public BankOffice(int id, String name, String address, boolean isWork, boolean isCredit, boolean isMoneyGet, boolean isMoneyPut, Bank bank, int rentCost) {
         this.id = id;
         this.name = name;
@@ -23,6 +29,8 @@ public class BankOffice {
         this.isMoneyPut = isMoneyPut;
         this.bank = bank;
         this.rentCost = rentCost;
+        this.bank.setOffice(this);
+        this.bank.setOfficeCount(this.bank.getOfficeCount() + 1);
     }
 
     public void setId(int id) {
@@ -47,9 +55,8 @@ public class BankOffice {
 
     public void setAtmCount(int atmCount) {
         this.atmCount = atmCount;
-        if (atmCount > 0) {
-            this.isAtm = true;
-        }
+        this.bank.setAtmCount(this.bank.getAtmCount() + 1);
+        this.isAtm = atmCount > 0;
     }
 
     public void setIsCredit(boolean isCredit) {
@@ -70,6 +77,10 @@ public class BankOffice {
 
     public void setRentCost(double rentCost) {
         this.rentCost = rentCost;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employeeMap.put(employee.getId(), employee);
     }
 
     public int getId() {
@@ -116,21 +127,28 @@ public class BankOffice {
         return this.bank;
     }
 
+    public Employee getEmployee(int i) {
+        return this.employeeMap.get(i);
+    }
+
     @Override
     public String toString() {
-        String str = "Офис{" + '\n' +
-                '\t' + "id=" + this.id + ',' + '\n' +
-                '\t' + "название='" + this.name + '\'' + ',' + '\n' +
-                '\t' + "адрес='" + this.address + '\'' + ',' + '\n';
-        str += (this.isWork) ? '\t' + "офис работает" + ',' + '\n' : '\t' + "офис не работает" + ',' + '\n';
-        str += (this.isAtm) ? '\t' + "имеются банкоматы" + ',' + '\n' : '\t' + "банкоматы отсутствуют" + ',' + '\n';
-        str += '\t' + "количество банкоматов=" + this.atmCount + ',' + '\n';
-        str += (this.isCredit) ? '\t' + "доступна выдача кредитов" + ',' + '\n' : '\t' + "выдача кредитов отсутствует" + ',' + '\n';
-        str += (this.isMoneyGet) ? '\t' + "выдача денег работает" + ',' + '\n' : '\t' + "выдача денег не работает" + ',' + '\n';
-        str += (this.isMoneyPut) ? '\t' + "внесение денег работает" + ',' + '\n' : '\t' + "внесение денег не работает" + ',' + '\n';
-        str += '\t' + "количество денег в банке=" + this.bank.getMoney() + ',' + '\n' +
-                '\t' + "стоимость аренды офиса=" + this.rentCost + ',' + '\n' +
-                '}' + '\n';
+        String str = "\n\tОфис{\n" +
+                "\t\tid=" + this.id + ",\n" +
+                "\t\tназвание='" + this.name + "',\n" +
+                "\t\tадрес='" + this.address + "',\n";
+        str += (this.isWork) ? "\t\tофис работает,\n" : "\t\tофис не работает,\n";
+        str += (this.isAtm) ? "\t\tимеются банкоматы,\n" : "\t\tбанкоматы отсутствуют,\n";
+        str += "\t\tколичество банкоматов=" + this.atmCount + ",\n";
+        str += (this.isCredit) ? "\t\tдоступна выдача кредитов,\n" : "\t\tвыдача кредитов отсутствует,\n";
+        str += (this.isMoneyGet) ? "\t\tвыдача денег работает,\n" : "\t\tвыдача денег не работает,\n";
+        str += (this.isMoneyPut) ? "\t\tвнесение денег работает,\n" : "\t\tвнесение денег не работает,\n";
+        str += "\t\tколичество денег в банке=" + this.bank.getMoney() + ",\n" +
+                "\t\tстоимость аренды офиса=" + this.rentCost + ",\n";
+        for (Map.Entry<Integer, Employee> entry : employeeMap.entrySet()) {
+            str += entry.getValue().toString();
+        }
+        str += "\t}\n";
         return str;
     }
 }

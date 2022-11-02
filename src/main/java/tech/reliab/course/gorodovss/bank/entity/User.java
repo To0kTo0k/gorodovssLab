@@ -2,14 +2,18 @@ package tech.reliab.course.gorodovss.bank.entity;
 
 import tech.reliab.course.gorodovss.bank.entity.common.Person;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 public class User extends Person {
     int id;
     String workplace;
-    CreditAccount creditAccount;
-    PaymentAccount paymentAccount;
     double creditRating;
     double salary;
-    Bank bank;
+
+    Map<Integer, CreditAccount> creditAccountMap = new HashMap<>();
+    Map<Integer, PaymentAccount> paymentAccountMap = new HashMap<>();
 
     public User(String firstName, String secondName, String surname, int id, String workplace) {
         super(firstName, secondName, surname);
@@ -28,11 +32,11 @@ public class User extends Person {
     }
 
     public void setCreditAccount(CreditAccount creditAccount) {
-        this.creditAccount = creditAccount;
+        this.creditAccountMap.put(creditAccount.getId(), creditAccount);
     }
 
     public void setPaymentAccount(PaymentAccount paymentAccount) {
-        this.paymentAccount = paymentAccount;
+        this.paymentAccountMap.put(paymentAccount.getId(), paymentAccount);
     }
 
     public void setCreditRating(double creditRating) {
@@ -43,10 +47,6 @@ public class User extends Person {
         this.salary = salary;
     }
 
-    public void setBank(Bank bank) {
-        this.bank = bank;
-    }
-
     public int getId() {
         return this.id;
     }
@@ -55,12 +55,12 @@ public class User extends Person {
         return this.workplace;
     }
 
-    public CreditAccount getCreditAccount() {
-        return this.creditAccount;
+    public CreditAccount getCreditAccount(int i) {
+        return this.creditAccountMap.get(i);
     }
 
-    public PaymentAccount getPaymentAccount() {
-        return this.paymentAccount;
+    public PaymentAccount getPaymentAccount(int i) {
+        return this.paymentAccountMap.get(i);
     }
 
     public double getCreditRating() {
@@ -71,22 +71,29 @@ public class User extends Person {
         return this.salary;
     }
 
-    public Bank getBank() {
-        return this.bank;
-    }
-
     @Override
     public String toString() {
-        String str = "Пользователь{" + '\n' +
-                '\t' + "id=" + this.id + ',' + '\n' +
-                '\t' + "имя='" + super.getFullName() + '\'' + ',' + '\n' +
-                '\t' + "место работы='" + this.workplace + '\'' + ',' + '\n' +
-                '\t' + "зарплата='" + this.salary + ',' + '\n';
-        str += (this.bank == null) ? '\t' + "не является клиентом банка" + ',' + '\n' : '\t' + "название банка='" + this.bank.getName() + '\'' + ',' + '\n';
-        str += (this.creditAccount == null) ? '\t' + "кредитный аккаунт отсутствует" + ',' + '\n' : '\t' + "кредитный аккаунт(id)=" + this.creditAccount.getId() + ',' + '\n';
-        str += (this.paymentAccount == null) ? '\t' + "платежный аккаунт отсутствует" + ',' + '\n' : '\t' + "платежный аккаунт(id)=" + this.paymentAccount.getId() + ',' + '\n';
-        str += '\t' + "кредитный рейтинг=" + this.creditRating + ',' + '\n' +
-                '}' + '\n';
+        String str = "\nПользователь{\n" +
+                "\tid=" + this.id + ",\n" +
+                "\tимя='" + super.getFullName() + "',\n" +
+                "\tместо работы='" + this.workplace + "',\n" +
+                "\tзарплата='" + this.salary + ",\n" +
+                "\tкредитный рейтинг=" + this.creditRating + ",\n";
+        if (this.creditAccountMap.isEmpty()) {
+            str += "\tкредитные аккаунты отсутствуют,\n";
+        } else {
+            for (Map.Entry<Integer, CreditAccount> entry : creditAccountMap.entrySet()) {
+                str += entry.getValue().toString();
+            }
+        }
+        if (this.paymentAccountMap.isEmpty()) {
+            str += "\tплатежные аккаунты отсутствуют,\n";
+        } else {
+            for (Map.Entry<Integer, PaymentAccount> entry : paymentAccountMap.entrySet()) {
+                str += entry.getValue().toString();
+            }
+        }
+        str += "\t}\n";
         return str;
     }
 }

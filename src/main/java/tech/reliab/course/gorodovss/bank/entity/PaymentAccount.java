@@ -1,15 +1,18 @@
 package tech.reliab.course.gorodovss.bank.entity;
 
 public class PaymentAccount {
-    int id;
-    User user; // Владелец аккаунта
-    double money = 0; // Кол-во денег
+    private int id;
+    private User user; // Владелец аккаунта
+    private Bank bank;
+    private double money = 0; // Кол-во денег
 
     public PaymentAccount(int id, User user, Bank bank) {
         this.id = id;
         this.user = user;
-        this.user.setBank(bank);
+        this.bank = bank;
+
         this.user.setPaymentAccount(this);
+        this.bank.setPaymentAccount(this);
     }
 
     public void setId(int id) {
@@ -18,6 +21,10 @@ public class PaymentAccount {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public void setBank(Bank bank) {
+        this.bank = bank;
     }
 
     public void setMoney(double money) {
@@ -32,17 +39,22 @@ public class PaymentAccount {
         return this.user;
     }
 
+    public Bank getBank() {
+        return this.bank;
+    }
+
     public double getMoney() {
         return this.money;
     }
 
     @Override
     public String toString() {
-        return "Платежный аккаунт{" + '\n' +
-                '\t' + "id=" + this.id + ',' + '\n' +
-                '\t' + "имя владельца='" + this.user.getFullName() + '\'' + ',' + '\n' +
-                '\t' + "название банка='" + this.user.getBank().getName() + '\'' + ',' + '\n' +
-                '\t' + "количество денег=" + this.money + ',' + '\n' +
-                '}' + '\n';
+        return "\n\tПлатежный аккаунт{\n" +
+                "\t\tid=" + this.id + ",\n" +
+                "\t\tid владельца=" + this.user.getId() + ",\n" +
+                "\t\tимя владельца='" + this.user.getFullName() + "',\n" +
+                "\t\tid банка=" + this.bank.getId() + ",\n" +
+                "\t\tназвание банка='" + this.bank.getName() + "',\n" +
+                "\t\tколичество денег=" + this.money + ",\n\t}\n";
     }
 }

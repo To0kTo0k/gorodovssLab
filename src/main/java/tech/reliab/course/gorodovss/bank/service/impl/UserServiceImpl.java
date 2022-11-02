@@ -47,24 +47,9 @@ public class UserServiceImpl implements UserService {
         user.setSalary(salary);
     }
 
-    @Override
-    public void updateBank(User user, Bank bank) {
-        user.setBank(bank);
-    }
-
-    @Override
-    public void addClient(User user) {
-        new BankServiceImpl().addClient(user.getBank());
-    }
-
-    @Override
-    public Boolean subClient(User user) {
-        return new BankServiceImpl().subClient(user.getBank());
-    }
-
-    @Override
+    /*@Override
     public void delClient(User user) {
         Boolean del = subClient(user);
         user = null;
-    }
+    }*/
 }

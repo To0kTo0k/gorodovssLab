@@ -2,13 +2,19 @@ package tech.reliab.course.gorodovss.bank.entity;
 
 import tech.reliab.course.gorodovss.bank.entity.common.Person;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 public class Employee extends Person {
-    int id;
-    String position;
-    boolean workmode;
-    BankOffice office;
-    boolean isCredit;
-    double salary;
+    private int id;
+    private String position;
+    private boolean workmode;
+    private BankOffice office;
+    private boolean isCredit;
+    private double salary;
+
+    private final Map<Integer, BankAtm> bankAtmMap = new HashMap<>();
 
     public Employee(String firstName, String secondName, String surname, int id, String position, boolean workmode, BankOffice office, boolean isCredit, double salary) {
         super(firstName, secondName, surname);
@@ -18,6 +24,8 @@ public class Employee extends Person {
         this.office = office;
         this.isCredit = isCredit;
         this.salary = salary;
+        this.office.setEmployee(this);
+        this.office.getBank().setEmployeeCount(this.office.getBank().getEmployeeCount() + 1);
     }
 
     public void setId(int id) {
@@ -44,6 +52,10 @@ public class Employee extends Person {
         this.salary = salary;
     }
 
+    public void setAtm(BankAtm atm) {
+        this.bankAtmMap.put(atm.getId(), atm);
+    }
+
     public int getId() {
         return this.id;
     }
@@ -68,18 +80,27 @@ public class Employee extends Person {
         return this.salary;
     }
 
+    public BankAtm getAtm(int i) {
+        return this.bankAtmMap.get(i);
+    }
+
     @Override
     public String toString() {
-        String str = "Работник{" + '\n' +
-                '\t' + "id=" + this.id + ',' + '\n' +
-                '\t' + "имя='" + super.getFullName() + '\'' + ',' + '\n' +
-                '\t' + "должность='" + this.position + '\'' + ',' + '\n' +
-                '\t' + "название банка='" + this.office.getBank().getName() + '\'' + ',' + '\n';
-        str += (this.workmode) ? '\t' + "очный режим работы" + ',' + '\n' : '\t' + "удаленный режим работы" + ',' + '\n';
-        str += '\t' + "название офиса='" + this.office.getName() + '\'' + ',' + '\n';
-        str += (this.isCredit) ? '\t' + "работает с выдачей кредитов" + ',' + '\n' : '\t' + "не работает с выдачей кредитов" + ',' + '\n';
-        str += '\t' + "зарплата=" + this.salary + ',' + '\n' +
-                '}' + '\n';
+        String str = "\n\t\tРаботник{\n" +
+                "\t\t\tid=" + this.id + ",\n" +
+                "\t\t\tимя='" + super.getFullName() + "',\n" +
+                "\t\t\tдолжность='" + this.position + "',\n" +
+                "\t\t\tid банка=" + this.office.getBank().getId() + ",\n" +
+                "\t\t\tназвание банка='" + this.office.getBank().getName() + "',\n";
+        str += (this.workmode) ? "\t\t\tочный режим работы,\n" : "\t\t\tудаленный режим работы,\n";
+        str += "\t\t\tid офиса=" + this.office.getId() + ",\n" +
+                "\t\t\tназвание офиса='" + this.office.getName() + "',\n";
+        str += (this.isCredit) ? "\t\t\tработает с выдачей кредитов,\n" : "\t\t\tне работает с выдачей кредитов,\n";
+        str += "\t\t\tзарплата=" + this.salary + ",\n";
+        for (Map.Entry<Integer, BankAtm> entry : bankAtmMap.entrySet()) {
+            str += entry.getValue().toString();
+        }
+        str += "\t\t}\n";
         return str;
     }
 }

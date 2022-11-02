@@ -21,6 +21,9 @@ public class BankAtm {
         this.isMoneyGet = isMoneyGet;
         this.isMoneyPut = isMoneyPut;
         this.serviceCost = serviceCost;
+
+        this.serviceEmployee.setAtm(this);
+        this.office.setAtmCount(this.office.getAtmCount() + 1);
     }
 
     public void setId(int id) {
@@ -97,23 +100,25 @@ public class BankAtm {
 
     @Override
     public String toString() {
-        String str = "Банкомат{" + '\n' +
-                '\t' + "id=" + this.id + ',' + '\n' +
-                '\t' + "название='" + this.name + '\'' + ',' + '\n' +
-                '\t' + "адрес офиса='" + this.office.getAddress() + '\'' + ',' + '\n';
+        String str = "\n\t\t\tБанкомат{\n" +
+                "\t\t\t\tid=" + this.id + ",\n" +
+                "\t\t\t\tназвание='" + this.name + "',\n" +
+                "\t\t\t\tадрес офиса='" + this.office.getAddress() + "',\n";
         switch (this.isWork) {
-            case 0 -> str += '\t' + "банкомат работает" + ',' + '\n';
-            case 1 -> str += '\t' + "банкомат не работает" + ',' + '\n';
-            case 2 -> str += '\t' + "нет денег" + ',' + '\n';
+            case 0 -> str += "\t\t\t\tбанкомат работает" + ",\n";
+            case 1 -> str += "\t\t\t\tбанкомат не работает" + ",\n";
+            case 2 -> str += "\t\t\t\tнет денег" + ",\n";
         }
-        str += '\t' + "название банка='" + this.office.getBank().getName() + '\'' + ',' + '\n' +
-                '\t' + "расположение='" + this.position + '\'' + ',' + '\n' +
-                '\t' + "обслуживающий сотрудник='" + this.serviceEmployee.getFullName() + '\'' + ',' + '\n';
-        str += (this.isMoneyGet) ? '\t' + "работает на выдачу денег" + ',' + '\n' : '\t' + "не работает на выдачу денег" + ',' + '\n';
-        str += (this.isMoneyPut) ? '\t' + "работает на прием денег" + ',' + '\n' : '\t' + "не работает на прием денег" + ',' + '\n';
-        str += '\t' + "количество денег в банке=" + this.office.getBank().getMoney() + ',' + '\n' +
-                '\t' + "стоимость сервисного обслуживания=" + this.serviceCost + ',' + '\n' +
-                '}' + '\n';
+        str += "\t\t\t\tid банка=" + this.office.getBank().getId() + ",\n" +
+                "\t\t\t\tназвание банка='" + this.office.getBank().getName() + "',\n" +
+                "\t\t\t\tрасположение='" + this.position + "',\n" +
+                "\t\t\t\tid обслуживающего сотрудника=" + this.serviceEmployee.getId() + ",\n" +
+                "\t\t\t\tобслуживающий сотрудник='" + this.serviceEmployee.getFullName() + "',\n";
+        str += (this.isMoneyGet) ? "\t\t\t\tработает на выдачу денег" + ",\n" : "\t\t\t\tне работает на выдачу денег" + ",\n";
+        str += (this.isMoneyPut) ? "\t\t\t\tработает на прием денег" + ",\n" : "\t\t\t\tне работает на прием денег" + ",\n";
+        str += "\t\t\t\tколичество денег в банке=" + this.office.getBank().getMoney() + ",\n" +
+                "\t\t\t\tстоимость сервисного обслуживания=" + this.serviceCost + ",\n" +
+                "\t\t\t}\n";
         return str;
     }
 }

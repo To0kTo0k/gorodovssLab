@@ -1,5 +1,9 @@
 package tech.reliab.course.gorodovss.bank.entity;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 public class Bank {
     private int id;
     private String name;
@@ -10,6 +14,9 @@ public class Bank {
     private byte bankRating;
     private double money;
     private float interestRating;   //процентная ставка
+
+    private final Map<Integer, BankOffice> officeMap = new HashMap<>();
+    private final Map<Integer, PaymentAccount> paymentAccountMap = new HashMap<>();
 
     public Bank(int id, String name) {
         this.id = id;
@@ -55,6 +62,14 @@ public class Bank {
         this.money = money;
     }
 
+    public void setOffice(BankOffice office) {
+        this.officeMap.put(office.getId(), office);
+    }
+
+    public void setPaymentAccount(PaymentAccount paymentAccount) {
+        this.paymentAccountMap.put(paymentAccount.getId(), paymentAccount);
+    }
+
     public int getId() {
         return this.id;
     }
@@ -91,18 +106,34 @@ public class Bank {
         return this.interestRating;
     }
 
+    public BankOffice getOffice(int i) {
+        return this.officeMap.get(i);
+    }
+
+    public PaymentAccount getPaymentAccount(int i) {
+        return this.paymentAccountMap.get(i);
+    }
+
     @Override
     public String toString() {
-        return "Банк{" + '\n' +
-                '\t' + "id=" + this.id + ',' + '\n' +
-                '\t' + "название='" + this.name + '\'' + ',' + '\n' +
-                '\t' + "количество офисов=" + this.officeCount + ',' + '\n' +
-                '\t' + "количество банкоматов=" + this.atmCount + ',' + '\n' +
-                '\t' + "количество сотрудников=" + this.employeeCount + ',' + '\n' +
-                '\t' + "количество клиентов=" + this.clientCount + ',' + '\n' +
-                '\t' + "банковский рейтинг=" + this.bankRating + ',' + '\n' +
-                '\t' + "количество денег в банке=" + this.money + ',' + '\n' +
-                '\t' + "процентная ставка=" + this.interestRating + ',' + '\n' +
-                '}' + '\n';
+        String str = "\nБанк{\n" +
+                "\tid=" + this.id + ",\n" +
+                "\tназвание='" + this.name + "',\n" +
+                "\tколичество офисов=" + this.officeCount + ",\n" +
+                "\tколичество банкоматов=" + this.atmCount + ",\n" +
+                "\tколичество сотрудников=" + this.employeeCount + ",\n" +
+                "\tколичество клиентов=" + this.clientCount + ",\n" +
+                "\tбанковский рейтинг=" + this.bankRating + ",\n" +
+                "\tколичество денег в банке=" + this.money + ",\n" +
+                "\tпроцентная ставка=" + this.interestRating + ",\n";
+
+        for (Map.Entry<Integer, BankOffice> entry : officeMap.entrySet()) {
+            str += entry.getValue().toString();
+        }
+        for (Map.Entry<Integer, PaymentAccount> entry : paymentAccountMap.entrySet()) {
+            str += entry.getValue().toString();
+        }
+        str += "}\n";
+        return str;
     }
 }

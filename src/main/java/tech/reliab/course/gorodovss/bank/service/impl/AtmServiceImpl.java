@@ -61,19 +61,9 @@ public class AtmServiceImpl implements AtmService {
         atm.setOffice(office);
     }
 
-    @Override
-    public void addAtm(BankAtm atm) {
-        new BankOfficeServiceImpl().addAtm(atm.getOffice());
-    }
-
-    @Override
-    public Boolean subAtm(BankAtm atm) {
-        return new BankOfficeServiceImpl().subAtm(atm.getOffice());
-    }
-
-    @Override
+    /*@Override
     public void delAtm(BankAtm atm) {
         Boolean del = subAtm(atm);
         atm = null;
-    }
+    }*/
 }
