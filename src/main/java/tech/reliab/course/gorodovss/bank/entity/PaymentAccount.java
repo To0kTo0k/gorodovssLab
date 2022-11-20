@@ -13,6 +13,7 @@ public class PaymentAccount {
 
         this.user.setPaymentAccount(this);
         this.bank.setPaymentAccount(this);
+        this.bank.setClientCount(this.bank.getClientCount() + 1);
     }
 
     public void setId(int id) {

@@ -28,6 +28,8 @@ public interface UserService {
 
     public void updateCreditRating(User user, double creditRating);
 
+    public void updateSalary(User user, double salary);
+
 
     /**
      * Удаление объекта класса клиент
