@@ -71,6 +71,14 @@ public class User extends Person {
         return this.salary;
     }
 
+    public Map<Integer, CreditAccount> getCreditAccountMap() {
+        return creditAccountMap;
+    }
+
+    public Map<Integer, PaymentAccount> getPaymentAccountMap() {
+        return paymentAccountMap;
+    }
+
     @Override
     public String toString() {
         String str = "\nПользователь{\n" +
@@ -79,7 +87,7 @@ public class User extends Person {
                 "\tместо работы='" + this.workplace + "',\n" +
                 "\tзарплата='" + this.salary + ",\n" +
                 "\tкредитный рейтинг=" + this.creditRating + ",\n";
-        if (this.creditAccountMap.isEmpty()) {
+        /*if (this.creditAccountMap.isEmpty()) {
             str += "\tкредитные аккаунты отсутствуют,\n";
         } else {
             for (Map.Entry<Integer, CreditAccount> entry : creditAccountMap.entrySet()) {
@@ -92,7 +100,7 @@ public class User extends Person {
             for (Map.Entry<Integer, PaymentAccount> entry : paymentAccountMap.entrySet()) {
                 str += entry.getValue().toString();
             }
-        }
+        }*/
         str += "\t}\n";
         return str;
     }

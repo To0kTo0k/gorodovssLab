@@ -10,7 +10,6 @@ public class PaymentAccount {
         this.id = id;
         this.user = user;
         this.bank = bank;
-
         this.user.setPaymentAccount(this);
         this.bank.setPaymentAccount(this);
         this.bank.setClientCount(this.bank.getClientCount() + 1);
@@ -50,7 +49,7 @@ public class PaymentAccount {
 
     @Override
     public String toString() {
-        return "\n\tПлатежный аккаунт{\n" +
+        return "\tПлатежный аккаунт{\n" +
                 "\t\tid=" + this.id + ",\n" +
                 "\t\tid владельца=" + this.user.getId() + ",\n" +
                 "\t\tимя владельца='" + this.user.getFullName() + "',\n" +

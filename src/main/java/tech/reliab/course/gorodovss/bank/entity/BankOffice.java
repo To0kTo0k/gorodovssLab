@@ -131,9 +131,13 @@ public class BankOffice {
         return this.employeeMap.get(i);
     }
 
+    public Map<Integer, Employee> getEmployeeMap() {
+        return employeeMap;
+    }
+
     @Override
     public String toString() {
-        String str = "\n\tОфис{\n" +
+        String str = "\tОфис{\n" +
                 "\t\tid=" + this.id + ",\n" +
                 "\t\tназвание='" + this.name + "',\n" +
                 "\t\tадрес='" + this.address + "',\n";
@@ -145,9 +149,6 @@ public class BankOffice {
         str += (this.isMoneyPut) ? "\t\tвнесение денег работает,\n" : "\t\tвнесение денег не работает,\n";
         str += "\t\tколичество денег в банке=" + this.bank.getMoney() + ",\n" +
                 "\t\tстоимость аренды офиса=" + this.rentCost + ",\n";
-        for (Map.Entry<Integer, Employee> entry : employeeMap.entrySet()) {
-            str += entry.getValue().toString();
-        }
         str += "\t}\n";
         return str;
     }

@@ -6,12 +6,17 @@ public interface BankService {
     /**
      * Создание объекта класса Bank
      **/
-    public Bank create(int id, String name);
+    public void create(int id, String name);
 
     /**
      * Вывод данных объекта класса Bank
      **/
     public void read(Bank bank);
+
+    /**
+     * Вывод всех данных объекта класса Bank
+     **/
+    public void readAll(Bank bank);
 
     /**
      * Обновление полей класса Bank

@@ -9,21 +9,18 @@ public class BankAtm {
     private boolean isMoneyGet; //выдает деньги
     private boolean isMoneyPut; //принимает деньги
     private double serviceCost;
-    private BankOffice office;
 
-    public BankAtm(int id, String name, BankOffice office, int isWork, String position, Employee serviceEmployee, boolean isMoneyGet, boolean isMoneyPut, double serviceCost) {
+    public BankAtm(int id, String name, int isWork, String position, Employee serviceEmployee, boolean isMoneyGet, boolean isMoneyPut, double serviceCost) {
         this.id = id;
         this.name = name;
-        this.office = office;
         this.isWork = isWork;
         this.position = position;
         this.serviceEmployee = serviceEmployee;
         this.isMoneyGet = isMoneyGet;
         this.isMoneyPut = isMoneyPut;
         this.serviceCost = serviceCost;
-
         this.serviceEmployee.setAtm(this);
-        this.office.setAtmCount(this.office.getAtmCount() + 1);
+        this.serviceEmployee.getOffice().setAtmCount(this.serviceEmployee.getOffice().getAtmCount() + 1);
     }
 
     public void setId(int id) {
@@ -32,10 +29,6 @@ public class BankAtm {
 
     public void setName(String atmName) {
         this.name = name;
-    }
-
-    public void setOffice(BankOffice office) {
-        this.office = office;
     }
 
     public void setIsWork(int isWork) {
@@ -70,10 +63,6 @@ public class BankAtm {
         return this.name;
     }
 
-    public BankOffice getOffice() {
-        return this.office;
-    }
-
     public int getIsWork() {
         return this.isWork;
     }
@@ -100,23 +89,23 @@ public class BankAtm {
 
     @Override
     public String toString() {
-        String str = "\n\t\t\tБанкомат{\n" +
+        String str = "\t\t\tБанкомат{\n" +
                 "\t\t\t\tid=" + this.id + ",\n" +
                 "\t\t\t\tназвание='" + this.name + "',\n" +
-                "\t\t\t\tадрес офиса='" + this.office.getAddress() + "',\n";
+                "\t\t\t\tадрес офиса='" + this.serviceEmployee.getOffice().getAddress() + "',\n";
         switch (this.isWork) {
             case 0 -> str += "\t\t\t\tбанкомат работает" + ",\n";
             case 1 -> str += "\t\t\t\tбанкомат не работает" + ",\n";
             case 2 -> str += "\t\t\t\tнет денег" + ",\n";
         }
-        str += "\t\t\t\tid банка=" + this.office.getBank().getId() + ",\n" +
-                "\t\t\t\tназвание банка='" + this.office.getBank().getName() + "',\n" +
+        str += "\t\t\t\tid банка=" + this.serviceEmployee.getOffice().getBank().getId() + ",\n" +
+                "\t\t\t\tназвание банка='" + this.serviceEmployee.getOffice().getBank().getName() + "',\n" +
                 "\t\t\t\tрасположение='" + this.position + "',\n" +
                 "\t\t\t\tid обслуживающего сотрудника=" + this.serviceEmployee.getId() + ",\n" +
                 "\t\t\t\tобслуживающий сотрудник='" + this.serviceEmployee.getFullName() + "',\n";
         str += (this.isMoneyGet) ? "\t\t\t\tработает на выдачу денег" + ",\n" : "\t\t\t\tне работает на выдачу денег" + ",\n";
         str += (this.isMoneyPut) ? "\t\t\t\tработает на прием денег" + ",\n" : "\t\t\t\tне работает на прием денег" + ",\n";
-        str += "\t\t\t\tколичество денег в банке=" + this.office.getBank().getMoney() + ",\n" +
+        str += "\t\t\t\tколичество денег в банке=" + this.serviceEmployee.getOffice().getBank().getMoney() + ",\n" +
                 "\t\t\t\tстоимость сервисного обслуживания=" + this.serviceCost + ",\n" +
                 "\t\t\t}\n";
         return str;

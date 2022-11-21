@@ -8,12 +8,17 @@ public interface UserService {
     /**
      * Создание объекта класса User
      **/
-    public User create(String firstName, String secondName, String surname, int id, String workplace);
+    public void create(String firstName, String secondName, String surname, int id, String workplace);
 
     /**
      * Вывод данных объекта класса User
      **/
     public void read(User user);
+
+    /**
+     * Вывод всех данных объекта класса User
+     **/
+    public void readAll(User user);
 
     /**
      * Обновление полей класса User

@@ -16,6 +16,11 @@ public class BankOfficeServiceImpl implements BankOfficeService {
     }
 
     @Override
+    public void readAll(BankOffice office) {
+        read(office);
+    }
+
+    @Override
     public void updateId(BankOffice office, int id) {
         office.setId(id);
     }

@@ -1,20 +1,43 @@
 package tech.reliab.course.gorodovss.bank.service.impl;
 
-import tech.reliab.course.gorodovss.bank.entity.Bank;
-import tech.reliab.course.gorodovss.bank.entity.CreditAccount;
-import tech.reliab.course.gorodovss.bank.entity.PaymentAccount;
-import tech.reliab.course.gorodovss.bank.entity.User;
+import tech.reliab.course.gorodovss.bank.entity.*;
 import tech.reliab.course.gorodovss.bank.service.UserService;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class UserServiceImpl implements UserService {
+
+    Map<Integer, User> userMap = new HashMap<>();
+
+    public Map<Integer, User> getUserMap() {
+        return userMap;
+    }
+
+    public User getUser(int id) {
+        return this.userMap.get(id);
+    }
+
     @Override
-    public User create(String firstName, String secondName, String surname, int id, String workplace) {
-        return new User(firstName, secondName, surname, id, workplace);
+    public void create(String firstName, String secondName, String surname, int id, String workplace) {
+        User user = new User(firstName, secondName, surname, id, workplace);
+        userMap.put(user.getId(), user);
     }
 
     @Override
     public void read(User user) {
         System.out.println(user);
+    }
+
+    @Override
+    public void readAll(User user) {
+        read(user);
+        for (Map.Entry<Integer, PaymentAccount> paymentAccounts : user.getPaymentAccountMap().entrySet()) {
+            System.out.println(paymentAccounts.getValue());
+        }
+        for (Map.Entry<Integer, CreditAccount> creditAccounts : user.getCreditAccountMap().entrySet()) {
+            System.out.println(creditAccounts.getValue());
+        }
     }
 
     @Override

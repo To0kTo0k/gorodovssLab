@@ -15,6 +15,11 @@ public interface BankOfficeService {
     public void read(BankOffice office);
 
     /**
+     * Вывод всех данных объекта класса BankOffice
+     **/
+    public void readAll(BankOffice office);
+
+    /**
      * Обновление полей класса BankOffice
      **/
     public void updateId(BankOffice office, int id);

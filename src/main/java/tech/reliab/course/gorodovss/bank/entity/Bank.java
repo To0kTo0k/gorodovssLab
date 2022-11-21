@@ -106,6 +106,14 @@ public class Bank {
         return this.interestRating;
     }
 
+    public Map<Integer, BankOffice> getOfficeMap() {
+        return officeMap;
+    }
+
+    public Map<Integer, PaymentAccount> getPaymentAccountMap() {
+        return paymentAccountMap;
+    }
+
     public BankOffice getOffice(int i) {
         return this.officeMap.get(i);
     }
@@ -126,13 +134,6 @@ public class Bank {
                 "\tбанковский рейтинг=" + this.bankRating + ",\n" +
                 "\tколичество денег в банке=" + this.money + ",\n" +
                 "\tпроцентная ставка=" + this.interestRating + ",\n";
-
-        for (Map.Entry<Integer, BankOffice> entry : officeMap.entrySet()) {
-            str += entry.getValue().toString();
-        }
-        for (Map.Entry<Integer, PaymentAccount> entry : paymentAccountMap.entrySet()) {
-            str += entry.getValue().toString();
-        }
         str += "}\n";
         return str;
     }

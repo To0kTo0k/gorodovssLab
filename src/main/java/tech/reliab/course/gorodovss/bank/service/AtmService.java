@@ -8,7 +8,7 @@ public interface AtmService {
     /**
      * Создание объекта класса BankAtm
      **/
-    public BankAtm create(int id, String name, BankOffice office, int isWork, String position, Employee serviceEmployee, boolean isMoneyGet, boolean isMoneyPut, double serviceCost);
+    public BankAtm create(int id, String name, int isWork, String position, Employee serviceEmployee, boolean isMoneyGet, boolean isMoneyPut, double serviceCost);
 
     /**
      * Вывод данных объекта класса BankAtm
@@ -54,11 +54,6 @@ public interface AtmService {
      * Обновление поля serviceCost класса BankAtm
      **/
     public void updateServiceCost(BankAtm atm, double serviceCost);
-
-    /**
-     * Обновление поля office класса BankAtm
-     **/
-    public void updateOffice(BankAtm atm, BankOffice office);
 
     /**
      * Удаление объекта класса банкомат

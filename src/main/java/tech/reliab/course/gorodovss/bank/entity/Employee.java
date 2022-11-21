@@ -84,9 +84,13 @@ public class Employee extends Person {
         return this.bankAtmMap.get(i);
     }
 
+    public Map<Integer, BankAtm> getBankAtmMap() {
+        return bankAtmMap;
+    }
+
     @Override
     public String toString() {
-        String str = "\n\t\tРаботник{\n" +
+        String str = "\t\tРаботник{\n" +
                 "\t\t\tid=" + this.id + ",\n" +
                 "\t\t\tимя='" + super.getFullName() + "',\n" +
                 "\t\t\tдолжность='" + this.position + "',\n" +
@@ -97,9 +101,6 @@ public class Employee extends Person {
                 "\t\t\tназвание офиса='" + this.office.getName() + "',\n";
         str += (this.isCredit) ? "\t\t\tработает с выдачей кредитов,\n" : "\t\t\tне работает с выдачей кредитов,\n";
         str += "\t\t\tзарплата=" + this.salary + ",\n";
-        for (Map.Entry<Integer, BankAtm> entry : bankAtmMap.entrySet()) {
-            str += entry.getValue().toString();
-        }
         str += "\t\t}\n";
         return str;
     }

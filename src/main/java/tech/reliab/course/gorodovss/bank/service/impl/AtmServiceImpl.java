@@ -7,8 +7,8 @@ import tech.reliab.course.gorodovss.bank.entity.BankAtm;
 
 public class AtmServiceImpl implements AtmService {
     @Override
-    public BankAtm create(int id, String name, BankOffice office, int isWork, String position, Employee serviceEmployee, boolean isMoneyGet, boolean isMoneyPut, double serviceCost) {
-        return new BankAtm(id, name, office, isWork, position, serviceEmployee, isMoneyGet, isMoneyPut, serviceCost);
+    public BankAtm create(int id, String name, int isWork, String position, Employee serviceEmployee, boolean isMoneyGet, boolean isMoneyPut, double serviceCost) {
+        return new BankAtm(id, name, isWork, position, serviceEmployee, isMoneyGet, isMoneyPut, serviceCost);
     }
 
     @Override
@@ -54,11 +54,6 @@ public class AtmServiceImpl implements AtmService {
     @Override
     public void updateServiceCost(BankAtm atm, double serviceCost) {
         atm.setServiceCost(serviceCost);
-    }
-
-    @Override
-    public void updateOffice(BankAtm atm, BankOffice office) {
-        atm.setOffice(office);
     }
 
     /*@Override
