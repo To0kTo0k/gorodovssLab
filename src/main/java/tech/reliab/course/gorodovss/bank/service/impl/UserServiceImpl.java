@@ -3,41 +3,26 @@ package tech.reliab.course.gorodovss.bank.service.impl;
 import tech.reliab.course.gorodovss.bank.entity.*;
 import tech.reliab.course.gorodovss.bank.service.UserService;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserServiceImpl implements UserService {
 
-    Map<Integer, User> userMap = new HashMap<>();
-
-    public Map<Integer, User> getUserMap() {
-        return userMap;
-    }
-
-    public User getUser(int id) {
-        return this.userMap.get(id);
-    }
+    private final List<User> userList = new ArrayList<>();
 
     @Override
     public void create(String firstName, String secondName, String surname, int id, String workplace) {
-        User user = new User(firstName, secondName, surname, id, workplace);
-        userMap.put(user.getId(), user);
+        this.userList.add(new User(firstName, secondName, surname, id, workplace));
+    }
+
+    @Override
+    public User get(int i) {
+        return this.userList.get(i);
     }
 
     @Override
     public void read(User user) {
         System.out.println(user);
-    }
-
-    @Override
-    public void readAll(User user) {
-        read(user);
-        for (Map.Entry<Integer, PaymentAccount> paymentAccounts : user.getPaymentAccountMap().entrySet()) {
-            System.out.println(paymentAccounts.getValue());
-        }
-        for (Map.Entry<Integer, CreditAccount> creditAccounts : user.getCreditAccountMap().entrySet()) {
-            System.out.println(creditAccounts.getValue());
-        }
     }
 
     @Override

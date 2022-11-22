@@ -89,26 +89,15 @@ public class BankAtm {
 
     @Override
     public String toString() {
-        String str = "\t\t\tБанкомат{\n" +
-                "\t\t\t\tid=" + this.id + ",\n" +
-                "\t\t\t\tназвание='" + this.name + "',\n" +
-                "\t\t\t\tадрес офиса='" + this.serviceEmployee.getOffice().getAddress() + "',\n";
-        switch (this.isWork) {
-            case 0 -> str += "\t\t\t\tбанкомат работает" + ",\n";
-            case 1 -> str += "\t\t\t\tбанкомат не работает" + ",\n";
-            case 2 -> str += "\t\t\t\tнет денег" + ",\n";
-        }
-        str += "\t\t\t\tid банка=" + this.serviceEmployee.getOffice().getBank().getId() + ",\n" +
-                "\t\t\t\tназвание банка='" + this.serviceEmployee.getOffice().getBank().getName() + "',\n" +
-                "\t\t\t\tрасположение='" + this.position + "',\n" +
-                "\t\t\t\tid обслуживающего сотрудника=" + this.serviceEmployee.getId() + ",\n" +
-                "\t\t\t\tобслуживающий сотрудник='" + this.serviceEmployee.getFullName() + "',\n";
-        str += (this.isMoneyGet) ? "\t\t\t\tработает на выдачу денег" + ",\n" : "\t\t\t\tне работает на выдачу денег" + ",\n";
-        str += (this.isMoneyPut) ? "\t\t\t\tработает на прием денег" + ",\n" : "\t\t\t\tне работает на прием денег" + ",\n";
-        str += "\t\t\t\tколичество денег в банке=" + this.serviceEmployee.getOffice().getBank().getMoney() + ",\n" +
-                "\t\t\t\tстоимость сервисного обслуживания=" + this.serviceCost + ",\n" +
-                "\t\t\t}\n";
-        return str;
+        return "\n\n\t\t\tBankAtm" +
+                "\n\t\t\tid=" + id +
+                "\n\t\t\tname='" + name + '\'' +
+                "\n\t\t\tisWork=" + isWork +
+                "\n\t\t\tposition='" + position + '\'' +
+                "\n\t\t\tserviceEmployee=" + serviceEmployee.getId() +
+                "\n\t\t\tisMoneyGet=" + isMoneyGet +
+                "\n\t\t\tisMoneyPut=" + isMoneyPut +
+                "\n\t\t\tserviceCost=" + serviceCost;
     }
 }
 

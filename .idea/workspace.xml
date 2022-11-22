@@ -10,33 +10,16 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/gorodovss/bank/entity/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/gorodovss/bank/entity/Bank.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/gorodovss/bank/entity/BankAtm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/gorodovss/bank/entity/BankAtm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/gorodovss/bank/entity/BankOffice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/gorodovss/bank/entity/BankOffice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/gorodovss/bank/entity/CreditAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/gorodovss/bank/entity/CreditAccount.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/gorodovss/bank/entity/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/gorodovss/bank/entity/Employee.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/gorodovss/bank/entity/PaymentAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/gorodovss/bank/entity/PaymentAccount.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/gorodovss/bank/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/gorodovss/bank/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/gorodovss/bank/service/AtmService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/gorodovss/bank/service/AtmService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/gorodovss/bank/service/BankOfficeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/gorodovss/bank/service/BankOfficeService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/gorodovss/bank/service/BankService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/gorodovss/bank/service/BankService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/gorodovss/bank/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/gorodovss/bank/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/gorodovss/bank/service/impl/AtmServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/gorodovss/bank/service/impl/AtmServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/gorodovss/bank/service/impl/BankOfficeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/gorodovss/bank/service/impl/BankOfficeServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/gorodovss/bank/service/impl/BankServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/gorodovss/bank/service/impl/BankServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/gorodovss/bank/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/gorodovss/bank/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/gorodovss/bank/utils/exceptions/MyExceptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/gorodovss/bank/utils/exceptions/MyExceptions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tech/reliab/course/gorodovss/bank/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tech/reliab/course/gorodovss/bank/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/gorodovss/bank/utils/exceptions/MyExceptions.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/tech/reliab/course/gorodovss/bank/entity/Bank.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tech/reliab/course/gorodovss/bank/entity/Bank.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tech/reliab/course/gorodovss/bank/entity/BankAtm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tech/reliab/course/gorodovss/bank/entity/BankAtm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tech/reliab/course/gorodovss/bank/entity/BankOffice.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tech/reliab/course/gorodovss/bank/entity/BankOffice.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tech/reliab/course/gorodovss/bank/entity/Employee.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tech/reliab/course/gorodovss/bank/entity/Employee.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tech/reliab/course/gorodovss/bank/entity/PaymentAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tech/reliab/course/gorodovss/bank/entity/PaymentAccount.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tech/reliab/course/gorodovss/bank/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tech/reliab/course/gorodovss/bank/entity/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tech/reliab/course/gorodovss/bank/service/AtmService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tech/reliab/course/gorodovss/bank/service/AtmService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tech/reliab/course/gorodovss/bank/service/BankOfficeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tech/reliab/course/gorodovss/bank/service/BankOfficeService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tech/reliab/course/gorodovss/bank/service/BankService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tech/reliab/course/gorodovss/bank/service/BankService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tech/reliab/course/gorodovss/bank/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tech/reliab/course/gorodovss/bank/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tech/reliab/course/gorodovss/bank/service/impl/AtmServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tech/reliab/course/gorodovss/bank/service/impl/AtmServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tech/reliab/course/gorodovss/bank/service/impl/BankOfficeServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tech/reliab/course/gorodovss/bank/service/impl/BankOfficeServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tech/reliab/course/gorodovss/bank/service/impl/BankServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tech/reliab/course/gorodovss/bank/service/impl/BankServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tech/reliab/course/gorodovss/bank/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tech/reliab/course/gorodovss/bank/service/impl/UserServiceImpl.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,21 +46,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -111,6 +97,8 @@
       <workItem from="1667485008466" duration="1919000" />
       <workItem from="1668711790089" duration="5000" />
       <workItem from="1669027626472" duration="3554000" />
+      <workItem from="1669031201042" duration="674000" />
+      <workItem from="1669108652885" duration="13852000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1663863077391</created>

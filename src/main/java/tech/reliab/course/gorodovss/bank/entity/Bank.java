@@ -2,6 +2,7 @@ package tech.reliab.course.gorodovss.bank.entity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Bank {
@@ -15,8 +16,8 @@ public class Bank {
     private double money;
     private float interestRating;   //процентная ставка
 
-    private final Map<Integer, BankOffice> officeMap = new HashMap<>();
-    private final Map<Integer, PaymentAccount> paymentAccountMap = new HashMap<>();
+    private final List<BankOffice> officeList = new ArrayList<>();
+    private final List<PaymentAccount> paymentAccountList = new ArrayList<>();
 
     public Bank(int id, String name) {
         this.id = id;
@@ -63,11 +64,11 @@ public class Bank {
     }
 
     public void setOffice(BankOffice office) {
-        this.officeMap.put(office.getId(), office);
+        this.officeList.add(office);
     }
 
     public void setPaymentAccount(PaymentAccount paymentAccount) {
-        this.paymentAccountMap.put(paymentAccount.getId(), paymentAccount);
+        this.paymentAccountList.add(paymentAccount);
     }
 
     public int getId() {
@@ -106,35 +107,35 @@ public class Bank {
         return this.interestRating;
     }
 
-    public Map<Integer, BankOffice> getOfficeMap() {
-        return officeMap;
+    public List<BankOffice> getOfficeList() {
+        return officeList;
     }
 
-    public Map<Integer, PaymentAccount> getPaymentAccountMap() {
-        return paymentAccountMap;
+    public List<PaymentAccount> getPaymentAccountList() {
+        return paymentAccountList;
     }
 
     public BankOffice getOffice(int i) {
-        return this.officeMap.get(i);
+        return this.officeList.get(i);
     }
 
     public PaymentAccount getPaymentAccount(int i) {
-        return this.paymentAccountMap.get(i);
+        return this.paymentAccountList.get(i);
     }
 
     @Override
     public String toString() {
-        String str = "\nБанк{\n" +
-                "\tid=" + this.id + ",\n" +
-                "\tназвание='" + this.name + "',\n" +
-                "\tколичество офисов=" + this.officeCount + ",\n" +
-                "\tколичество банкоматов=" + this.atmCount + ",\n" +
-                "\tколичество сотрудников=" + this.employeeCount + ",\n" +
-                "\tколичество клиентов=" + this.clientCount + ",\n" +
-                "\tбанковский рейтинг=" + this.bankRating + ",\n" +
-                "\tколичество денег в банке=" + this.money + ",\n" +
-                "\tпроцентная ставка=" + this.interestRating + ",\n";
-        str += "}\n";
-        return str;
+        return "\nBank" +
+                "\nid=" + id +
+                "\nname='" + name + '\'' +
+                "\nofficeCount=" + officeCount +
+                "\natmCount=" + atmCount +
+                "\nemployeeCount=" + employeeCount +
+                "\nclientCount=" + clientCount +
+                "\nbankRating=" + bankRating +
+                "\nmoney=" + money +
+                "\ninterestRating=" + interestRating +
+                "\nofficeList=" + officeList +
+                "\npaymentAccountList=" + paymentAccountList;
     }
 }

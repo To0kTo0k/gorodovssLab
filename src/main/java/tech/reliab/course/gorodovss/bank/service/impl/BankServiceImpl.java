@@ -3,51 +3,26 @@ package tech.reliab.course.gorodovss.bank.service.impl;
 import tech.reliab.course.gorodovss.bank.entity.*;
 import tech.reliab.course.gorodovss.bank.service.BankService;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BankServiceImpl implements BankService {
 
-    Map<Integer, Bank> bankMap = new HashMap<>();
-
-    public Map<Integer, Bank> getBankMap() {
-        return bankMap;
-    }
-
-    public Bank getBank(int id) {
-        return this.bankMap.get(id);
-    }
-
-    public void addBank(int id, Bank bank) {
-        bankMap.put(id, bank);
-    }
+    private final List<Bank> bankList = new ArrayList<>();
 
     @Override
     public void create(int id, String name) {
-        Bank bank = new Bank(id, name);
-        bankMap.put(bank.getId(), bank);
+        this.bankList.add(new Bank(id, name));
+    }
+
+    @Override
+    public Bank get(int i) {
+        return this.bankList.get(i);
     }
 
     @Override
     public void read(Bank bank) {
         System.out.println(bank);
-    }
-
-    @Override
-    public void readAll(Bank bank) {
-        read(bank);
-        for (Map.Entry<Integer, BankOffice> offices : bank.getOfficeMap().entrySet()) {
-            System.out.println(offices.getValue());
-            for (Map.Entry<Integer, Employee> employees : offices.getValue().getEmployeeMap().entrySet()) {
-                System.out.println(employees.getValue());
-                for (Map.Entry<Integer, BankAtm> atms : employees.getValue().getBankAtmMap().entrySet()) {
-                    System.out.println(atms.getValue());
-                }
-            }
-        }
-        for (Map.Entry<Integer, PaymentAccount> entry : bank.getPaymentAccountMap().entrySet()) {
-            System.out.println(entry.getValue());
-        }
     }
 
     @Override

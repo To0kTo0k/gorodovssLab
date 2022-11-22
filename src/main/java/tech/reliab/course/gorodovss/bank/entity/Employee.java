@@ -4,6 +4,7 @@ import tech.reliab.course.gorodovss.bank.entity.common.Person;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Employee extends Person {
@@ -14,7 +15,7 @@ public class Employee extends Person {
     private boolean isCredit;
     private double salary;
 
-    private final Map<Integer, BankAtm> bankAtmMap = new HashMap<>();
+    private final List<BankAtm> bankAtmList = new ArrayList<>();
 
     public Employee(String firstName, String secondName, String surname, int id, String position, boolean workmode, BankOffice office, boolean isCredit, double salary) {
         super(firstName, secondName, surname);
@@ -53,7 +54,7 @@ public class Employee extends Person {
     }
 
     public void setAtm(BankAtm atm) {
-        this.bankAtmMap.put(atm.getId(), atm);
+        this.bankAtmList.add(atm);
     }
 
     public int getId() {
@@ -81,27 +82,22 @@ public class Employee extends Person {
     }
 
     public BankAtm getAtm(int i) {
-        return this.bankAtmMap.get(i);
+        return this.bankAtmList.get(i);
     }
 
-    public Map<Integer, BankAtm> getBankAtmMap() {
-        return bankAtmMap;
+    public List<BankAtm> getBankAtmList() {
+        return bankAtmList;
     }
 
     @Override
     public String toString() {
-        String str = "\t\tРаботник{\n" +
-                "\t\t\tid=" + this.id + ",\n" +
-                "\t\t\tимя='" + super.getFullName() + "',\n" +
-                "\t\t\tдолжность='" + this.position + "',\n" +
-                "\t\t\tid банка=" + this.office.getBank().getId() + ",\n" +
-                "\t\t\tназвание банка='" + this.office.getBank().getName() + "',\n";
-        str += (this.workmode) ? "\t\t\tочный режим работы,\n" : "\t\t\tудаленный режим работы,\n";
-        str += "\t\t\tid офиса=" + this.office.getId() + ",\n" +
-                "\t\t\tназвание офиса='" + this.office.getName() + "',\n";
-        str += (this.isCredit) ? "\t\t\tработает с выдачей кредитов,\n" : "\t\t\tне работает с выдачей кредитов,\n";
-        str += "\t\t\tзарплата=" + this.salary + ",\n";
-        str += "\t\t}\n";
-        return str;
+        return "\n\n\t\tEmployee" +
+                "\n\t\tid=" + id +
+                "\n\t\tposition='" + position + '\'' +
+                "\n\t\torkmode=" + workmode +
+                "\n\t\tffice=" + office.getId() +
+                "\n\t\tsCredit=" + isCredit +
+                "\n\t\talary=" + salary +
+                "\n\t\tankAtmList=" + bankAtmList;
     }
 }

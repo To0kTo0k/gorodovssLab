@@ -9,14 +9,14 @@ public interface BankService {
     public void create(int id, String name);
 
     /**
+     * Получение объекта класса Bank
+     **/
+    public Bank get(int i);
+
+    /**
      * Вывод данных объекта класса Bank
      **/
     public void read(Bank bank);
-
-    /**
-     * Вывод всех данных объекта класса Bank
-     **/
-    public void readAll(Bank bank);
 
     /**
      * Обновление полей класса Bank

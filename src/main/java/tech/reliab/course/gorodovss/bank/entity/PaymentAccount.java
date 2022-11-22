@@ -49,12 +49,10 @@ public class PaymentAccount {
 
     @Override
     public String toString() {
-        return "\tПлатежный аккаунт{\n" +
-                "\t\tid=" + this.id + ",\n" +
-                "\t\tid владельца=" + this.user.getId() + ",\n" +
-                "\t\tимя владельца='" + this.user.getFullName() + "',\n" +
-                "\t\tid банка=" + this.bank.getId() + ",\n" +
-                "\t\tназвание банка='" + this.bank.getName() + "',\n" +
-                "\t\tколичество денег=" + this.money + ",\n\t}\n";
+        return "\n\n\tPaymentAccount" +
+                "\n\tid=" + id +
+                "\n\tuser=" + user.getId() +
+                "\n\tbank=" + bank.getId() +
+                "\n\tmoney=" + money;
     }
 }

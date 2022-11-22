@@ -2,6 +2,7 @@ package tech.reliab.course.gorodovss.bank.entity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class BankOffice {
@@ -17,7 +18,7 @@ public class BankOffice {
     private Bank bank;
     private double rentCost;
 
-    private final Map<Integer, Employee> employeeMap = new HashMap<>();
+    private final List<Employee> employeeList = new ArrayList<>();
 
     public BankOffice(int id, String name, String address, boolean isWork, boolean isCredit, boolean isMoneyGet, boolean isMoneyPut, Bank bank, int rentCost) {
         this.id = id;
@@ -80,7 +81,7 @@ public class BankOffice {
     }
 
     public void setEmployee(Employee employee) {
-        this.employeeMap.put(employee.getId(), employee);
+        this.employeeList.add(employee);
     }
 
     public int getId() {
@@ -128,28 +129,27 @@ public class BankOffice {
     }
 
     public Employee getEmployee(int i) {
-        return this.employeeMap.get(i);
+        return this.employeeList.get(i);
     }
 
-    public Map<Integer, Employee> getEmployeeMap() {
-        return employeeMap;
+    public List<Employee> getEmployeeList() {
+        return employeeList;
     }
 
     @Override
     public String toString() {
-        String str = "\tОфис{\n" +
-                "\t\tid=" + this.id + ",\n" +
-                "\t\tназвание='" + this.name + "',\n" +
-                "\t\tадрес='" + this.address + "',\n";
-        str += (this.isWork) ? "\t\tофис работает,\n" : "\t\tофис не работает,\n";
-        str += (this.isAtm) ? "\t\tимеются банкоматы,\n" : "\t\tбанкоматы отсутствуют,\n";
-        str += "\t\tколичество банкоматов=" + this.atmCount + ",\n";
-        str += (this.isCredit) ? "\t\tдоступна выдача кредитов,\n" : "\t\tвыдача кредитов отсутствует,\n";
-        str += (this.isMoneyGet) ? "\t\tвыдача денег работает,\n" : "\t\tвыдача денег не работает,\n";
-        str += (this.isMoneyPut) ? "\t\tвнесение денег работает,\n" : "\t\tвнесение денег не работает,\n";
-        str += "\t\tколичество денег в банке=" + this.bank.getMoney() + ",\n" +
-                "\t\tстоимость аренды офиса=" + this.rentCost + ",\n";
-        str += "\t}\n";
-        return str;
+        return "\n\n\tBankOffice" +
+                "\n\tid=" + id +
+                "\n\tname='" + name + '\'' +
+                "\n\taddress='" + address + '\'' +
+                "\n\tisWork=" + isWork +
+                "\n\tisAtm=" + isAtm +
+                "\n\tatmCount=" + atmCount +
+                "\n\tisCredit=" + isCredit +
+                "\n\tisMoneyGet=" + isMoneyGet +
+                "\n\tisMoneyPut=" + isMoneyPut +
+                "\n\tbank=" + bank.getId() +
+                "\n\trentCost=" + rentCost +
+                "\n\temployeeList=" + employeeList;
     }
 }

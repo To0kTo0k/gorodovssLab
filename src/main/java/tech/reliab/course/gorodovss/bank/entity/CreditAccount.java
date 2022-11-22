@@ -93,18 +93,14 @@ public class CreditAccount {
 
     @Override
     public String toString() {
-        return "\n\tКредитный аккаунт{\n" +
-                "\t\tid=" + this.id + ",\n" +
-                "\t\tимя пользователя='" + this.paymentAccount.getUser().getFullName() + "',\n" +
-                "\t\tназвание банка='" + this.paymentAccount.getBank().getName() + "',\n" +
-                "\t\tдата открытия кредита=" + this.start + ",\n" +
-                "\t\tдата закрытия кредита=" + this.finish + ",\n" +
-                "\t\tпродолжительность кредита=" + this.length + ",\n" +
-                "\t\tразмер кредита=" + this.size + ",\n" +
-                "\t\tежемесячный платеж=" + this.monthlyPayment + ",\n" +
-                "\t\tпроцентная ставка=" + this.paymentAccount.getBank().getInterestRating() + ",\n" +
-                "\t\tсотрудник выдавший кредит='" + this.employee.getFullName() + "',\n" +
-                "\t\tплатежный аккаунт(id)=" + this.paymentAccount.getId() + ",\n" +
-                "\t}\n";
+        return "\n\n\tCreditAccount" +
+                "\n\tid=" + id +
+                "\n\tstart=" + start +
+                "\n\tfinish=" + finish +
+                "\n\tlength=" + length +
+                "\n\tsize=" + size +
+                "\n\tmonthlyPayment=" + monthlyPayment +
+                "\n\temployee=" + employee.getId() +
+                "\n\tpaymentAccount=" + paymentAccount;
     }
 }

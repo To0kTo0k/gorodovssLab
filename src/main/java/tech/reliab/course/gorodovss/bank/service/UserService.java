@@ -11,14 +11,14 @@ public interface UserService {
     public void create(String firstName, String secondName, String surname, int id, String workplace);
 
     /**
+     * Получение объекта класса User
+     **/
+    public User get(int i);
+
+    /**
      * Вывод данных объекта класса User
      **/
     public void read(User user);
-
-    /**
-     * Вывод всех данных объекта класса User
-     **/
-    public void readAll(User user);
 
     /**
      * Обновление полей класса User

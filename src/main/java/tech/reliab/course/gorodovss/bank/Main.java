@@ -1,59 +1,67 @@
 package tech.reliab.course.gorodovss.bank;
 
-import tech.reliab.course.gorodovss.bank.entity.*;
 import tech.reliab.course.gorodovss.bank.service.impl.*;
 
 import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
-        /*5 банков(
-            3 офиса(
-                5 клиентов(
-                    2 платежных счета
-                    2 кредитных счета
-                )
-                5 сотрудников
-            )
-            3 банкомата)*/
-
-
         BankServiceImpl bankService = new BankServiceImpl();
         BankOfficeServiceImpl bankOfficeService = new BankOfficeServiceImpl();
         EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
         AtmServiceImpl atmService = new AtmServiceImpl();
+        UserServiceImpl userService = new UserServiceImpl();
+        PaymentAccountServiceImpl paymentAccountService = new PaymentAccountServiceImpl();
+        /*CreditAccountServiceImpl creditAccountService = new CreditAccountServiceImpl();*/
+
+        // consts
+        final int bankNum = 5;
+        final int officeNum = 3;
+        final int employeeNum = 5;
+        final int atmNum = 3;
+        final int userNum = 5;
 
         // banks
-        for (int bankNum = 0; bankNum < 5; bankNum++) {
-            bankService.create(bankNum + 1, "Bank" + (bankNum + 1));
-            // office
-            for (int officeNum = 0; officeNum < 3; officeNum++) {
-                bankOfficeService.create(officeNum + 1, "Office" + (officeNum + 1), "address", true, true, true, true, bankService.getBank(bankNum + 1), 10000);
-                // employee
-                for (int employeeNum = 0; employeeNum < 5; employeeNum++) {
-                    employeeService.create("name", "patronym", "surname", employeeNum + 1, "position", true, bankService.getBank(bankNum + 1).getOffice(officeNum + 1), true, 1000);
-                    for (int atmNum = 0; atmNum < 3; atmNum++) {
-                        // atms
-                        atmService.create(atmNum + 1, "atm" + (atmNum + 1), 1, "position", bankService.getBank(bankNum + 1).getOffice(officeNum + 1).getEmployee(employeeNum + 1), true, true, 1000);
+        for (int i = 0; i < bankNum; i++) {
+            bankService.create(i + 1, "bank" + i + 1);
+            // offices
+            for (int j = 0; j < officeNum; j++) {
+                bankOfficeService.create(j + 1, "office" + j + 1, "address", true, true, true, true, bankService.get(i), 10000);
+                // employees
+                for (int k = 0; k < employeeNum; k++) {
+                    employeeService.create("Ivan", "Ivanovich", "Ivanov", k + 1, "position", true, bankService.get(i).getOffice(j), true, 1000);
+                    for (int l = 0; l < atmNum; l++) {
+                        atmService.create(l + 1, "atm" + l + 1, 1, "position", bankService.get(i).getOffice(j).getEmployee(k), true, true, 1000);
                     }
                 }
             }
+            // users
+            for (int m = 0; m < userNum; m++) {
+                userService.create("Petr", "Petrovich", "Petrov", m + 1, "workplace");
+                // every user has one payment account in every bank
+                paymentAccountService.create((m + 1) + (userNum * i), userService.get(m), bankService.get(i));
+            }
         }
 
-        // есть вопросы по поводу реализации автоинициализации кредитных и платежных аккаунтов
-        // если я еще как-то могу связать платежный аккаунт и с банком, и с пользователем
-        // то с кредитным аккаунтом возникают проблемы, т.к. он привязывается к платежному аккаунту и к сотруднику
-        
-        // также, есть вопрос по реализации методов для лабораторной №3 (еще не писал их)
-        // каким образом их применить? или просто создать, чтобы были?
-
-        // обработку исключений добавлю чуть позднее
-
-        // all banks info output
-        for (Map.Entry<Integer, Bank> entry : bankService.getBankMap().entrySet()) {
-            bankService.readAll(entry.getValue());
+        // all bank information
+        for (int i = 0; i < bankNum; i++) {
+            bankService.read(bankService.get(i));
         }
+        // all user information
+        for (int i = 0; i < userNum; i++) {
+            userService.read(userService.get(i));
+        }
+
+        // методы для ЛР3 (в процессе)
+        // выбор клиентом банка (по критериям)
+        // выбор офиса
+        // выбор работника
+        // завести счет (если нет)
+        // проверка клиента
+        // отправка в банкомат
+
+        // добавить исключения
+        // написать 5 своих исключений
+
     }
 }
