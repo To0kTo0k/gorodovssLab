@@ -5,10 +5,15 @@ import tech.reliab.course.gorodovss.bank.service.UserService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class UserServiceImpl implements UserService {
 
     private final List<User> userList = new ArrayList<>();
+
+    public List<User> getUserList() {
+        return userList;
+    }
 
     @Override
     public void create(String firstName, String secondName, String surname, int id, String workplace) {
@@ -18,6 +23,24 @@ public class UserServiceImpl implements UserService {
     @Override
     public User get(int i) {
         return this.userList.get(i);
+    }
+
+    @Override
+    public User choose() {
+        System.out.println("Выберите пользователя, которому хотите оформить кредит:");
+        for (int i = 0; i < getUserList().size(); i++) {
+            System.out.println(get(i).getId() + " " + get(i).getFullName() + " " + get(i).getCreditRating());
+        }
+        System.out.println("\nВведите номер выбранного пользователя:");
+        Scanner in = new Scanner(System.in);
+        int userId = in.nextInt() - 1;
+        try {
+            System.out.println("\nВыбран пользователь:\n" + get(userId).getId() + " " + get(userId).getFullName() + " " + get(userId).getCreditRating());
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("\n" + e.getMessage() + "\n");
+            return null;
+        }
+        return get(userId);
     }
 
     @Override

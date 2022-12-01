@@ -3,19 +3,60 @@ package tech.reliab.course.gorodovss.bank.service.impl;
 import tech.reliab.course.gorodovss.bank.entity.CreditAccount;
 import tech.reliab.course.gorodovss.bank.entity.Employee;
 import tech.reliab.course.gorodovss.bank.entity.PaymentAccount;
+import tech.reliab.course.gorodovss.bank.exceptions.ExistCreditAccountException;
+import tech.reliab.course.gorodovss.bank.exceptions.NoCreditAccountException;
 import tech.reliab.course.gorodovss.bank.service.CreditAccountService;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CreditAccountServiceImpl implements CreditAccountService {
+
+    private final List<CreditAccount> creditAccountList = new ArrayList<>();
+
+    public List<CreditAccount> getCreditAccountList() {
+        return creditAccountList;
+    }
+
     @Override
-    public CreditAccount create(int id, LocalDate start, LocalDate finish, int size, Employee employee, PaymentAccount paymentAccount) {
+    public CreditAccount create(int id, LocalDate start, LocalDate finish, long size, Employee employee, PaymentAccount paymentAccount) {
+        this.creditAccountList.add(new CreditAccount(id, start, finish, size, employee, paymentAccount));
         return new CreditAccount(id, start, finish, size, employee, paymentAccount);
+    }
+
+    @Override
+    public CreditAccount get(int i) {
+        return this.creditAccountList.get(i);
     }
 
     @Override
     public void read(CreditAccount creditAccount) {
         System.out.println(creditAccount);
+    }
+
+    @Override
+    public boolean check(PaymentAccount paymentAccount) {
+        CreditAccount creditAccount = null;
+        for (CreditAccount cAcc : paymentAccount.getUser().getCreditAccountList()) {
+            if (cAcc.getPaymentAccount().equals(paymentAccount)) {
+                creditAccount = cAcc;
+                break;
+            }
+        }
+        try {
+            if (creditAccount == null) {
+                throw new NoCreditAccountException("Пользователь не брал кредит в этом банке");
+            } else {
+                throw new ExistCreditAccountException("У пользователя уже взят кредит в данном банке");
+            }
+        } catch (NoCreditAccountException e) {
+            System.out.println("\n" + e.getMessage());
+            return false;
+        } catch (ExistCreditAccountException e) {
+            System.out.println("\n" + e.getMessage());
+            return true;
+        }
     }
 
     @Override

@@ -1,8 +1,11 @@
 package tech.reliab.course.gorodovss.bank.service.impl;
 
 import tech.reliab.course.gorodovss.bank.entity.Bank;
+import tech.reliab.course.gorodovss.bank.exceptions.NoOfficeMoneyException;
 import tech.reliab.course.gorodovss.bank.service.BankOfficeService;
 import tech.reliab.course.gorodovss.bank.entity.BankOffice;
+
+import java.util.Scanner;
 
 public class BankOfficeServiceImpl implements BankOfficeService {
     @Override
@@ -13,6 +16,35 @@ public class BankOfficeServiceImpl implements BankOfficeService {
     @Override
     public void read(BankOffice office) {
         System.out.println(office);
+    }
+
+    @Override
+    public BankOffice choose(Bank bank, int creditSize) {
+        System.out.println("\nВыберите офис, в котором хотите взять кредит:");
+        for (BankOffice office : bank.getOfficeList()) {
+            System.out.println(office.getId() + " " + office.getName());
+        }
+        System.out.println("\nВведите номер выбранного офиса:");
+        Scanner in = new Scanner(System.in);
+        int officeId = in.nextInt() - 1;
+        try {
+            System.out.println("\nВыбран офис:\n" + bank.getOffice(officeId));
+        }
+        catch (IndexOutOfBoundsException e) {
+            System.out.println("\n" + e.getMessage());
+            return null;
+        }
+        BankOffice office = bank.getOffice(officeId);
+        try {
+            if (creditSize > office.getBank().getMoney()) {
+                throw new NoOfficeMoneyException("\nВ этом офисе нет требуемой суммы денег");
+            }
+        }
+        catch (NoOfficeMoneyException e) {
+            System.out.println("\n" + e.getMessage());
+            return null;
+        }
+        return office;
     }
 
     @Override

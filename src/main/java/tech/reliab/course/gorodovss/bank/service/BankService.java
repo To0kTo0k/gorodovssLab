@@ -13,6 +13,8 @@ public interface BankService {
      **/
     public Bank get(int i);
 
+    Bank choose(int creditSize);
+
     /**
      * Вывод данных объекта класса Bank
      **/

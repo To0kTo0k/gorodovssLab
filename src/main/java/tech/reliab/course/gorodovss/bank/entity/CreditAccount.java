@@ -13,7 +13,7 @@ public class CreditAccount {
     private Employee employee;
     private PaymentAccount paymentAccount;
 
-    public CreditAccount(int id, LocalDate start, LocalDate finish, int size, Employee employee, PaymentAccount paymentAccount) {
+    public CreditAccount(int id, LocalDate start, LocalDate finish, long size, Employee employee, PaymentAccount paymentAccount) {
         this.id = id;
         this.start = start;
         this.finish = finish;

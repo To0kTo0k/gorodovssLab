@@ -14,6 +14,8 @@ public interface EmployeeService {
      **/
     public void read(Employee employee);
 
+    Employee choose(BankOffice office);
+
     /**
      * Обновление полей класса Employee
      **/

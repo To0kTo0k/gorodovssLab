@@ -10,6 +10,10 @@ public interface PaymentAccountService {
      **/
     public PaymentAccount create(int id, User user, Bank bank);
 
+    PaymentAccount get(int i);
+
+    PaymentAccount choose(User user, Bank bank);
+
     /**
      * Вывод данных объекта класса PaymentAccount
      **/

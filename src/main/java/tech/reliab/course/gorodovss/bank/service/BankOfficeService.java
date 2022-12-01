@@ -14,6 +14,8 @@ public interface BankOfficeService {
      **/
     public void read(BankOffice office);
 
+    BankOffice choose(Bank bank, int creditSize);
+
     /**
      * Вывод всех данных объекта класса BankOffice
      **/

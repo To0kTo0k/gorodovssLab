@@ -16,6 +16,11 @@ public interface UserService {
     public User get(int i);
 
     /**
+     * Выбор пользователя из списка пользователей
+     **/
+    User choose();
+
+    /**
      * Вывод данных объекта класса User
      **/
     public void read(User user);

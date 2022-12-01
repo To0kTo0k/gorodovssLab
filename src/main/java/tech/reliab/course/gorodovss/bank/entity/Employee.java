@@ -94,10 +94,10 @@ public class Employee extends Person {
         return "\n\n\t\tEmployee" +
                 "\n\t\tid=" + id +
                 "\n\t\tposition='" + position + '\'' +
-                "\n\t\torkmode=" + workmode +
-                "\n\t\tffice=" + office.getId() +
-                "\n\t\tsCredit=" + isCredit +
-                "\n\t\talary=" + salary +
-                "\n\t\tankAtmList=" + bankAtmList;
+                "\n\t\tworkmode=" + workmode +
+                "\n\t\toffice=" + office.getId() +
+                "\n\t\tisCredit=" + isCredit +
+                "\n\t\tsalary=" + salary +
+                "\n\t\tbankAtmList=" + bankAtmList;
     }
 }

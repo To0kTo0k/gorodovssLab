@@ -11,12 +11,16 @@ public interface CreditAccountService {
     /**
      * Создание объекта класса CreditAccount
      **/
-    public CreditAccount create(int id, LocalDate start, LocalDate finish, int size, Employee employee, PaymentAccount paymentAccount);
+    public CreditAccount create(int id, LocalDate start, LocalDate finish, long size, Employee employee, PaymentAccount paymentAccount);
+
+    CreditAccount get(int i);
 
     /**
      * Вывод данных объекта класса CreditAccount
      **/
     public void read(CreditAccount creditAccount);
+
+    boolean check(PaymentAccount paymentAccount);
 
     /**
      * Обновление полей класса CreditAccount
